@@ -9,45 +9,65 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(180deg, #0B0F1A, #1A1F2E, #2A1F3D);
+      background: #0B0F1A;
       color: white;
-      text-align: center;
+      line-height: 1.6;
     }
 
     .container {
-      padding: 40px 20px;
-      max-width: 600px;
+      max-width: 900px;
       margin: auto;
+      padding: 40px 20px;
     }
 
     h1 {
-      font-size: 42px;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 28px;
       margin-bottom: 10px;
     }
 
     p {
       color: #aaa;
       font-size: 18px;
-      margin-bottom: 30px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
     }
 
     .cta {
       background: #4CAF50;
       color: white;
-      padding: 16px;
+      padding: 16px 24px;
       border-radius: 12px;
       font-size: 16px;
       text-decoration: none;
       display: inline-block;
-      margin-bottom: 30px;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 80px;
     }
 
     .card {
       background: #1A1F2E;
-      padding: 20px;
+      padding: 24px;
       border-radius: 16px;
-      margin-bottom: 20px;
-      text-align: left;
+      margin-top: 20px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
 
     input {
@@ -55,8 +75,8 @@
       padding: 14px;
       border-radius: 10px;
       border: none;
-      margin-bottom: 10px;
-      background: #0B0F1A;
+      margin-top: 10px;
+      background: #111;
       color: white;
     }
 
@@ -68,56 +88,89 @@
       background: #4CAF50;
       color: white;
       font-size: 16px;
+      margin-top: 10px;
+      font-weight: 600;
     }
 
     .footer {
-      margin-top: 40px;
+      text-align: center;
+      margin-top: 80px;
       color: #666;
-      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .features {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-
-    <h1>Stack</h1>
-
+  <!-- HERO -->
+  <div class="hero container">
+    <h1>Save money with friends.</h1>
     <p>
-      Save money with friends. Turn everyday spending into shared progress.
+      Turn everyday spending into shared progress.
     </p>
 
-    <a class="cta" href="#">Get Early Access</a>
+    <a href="#" class="cta">Get Early Access</a>
+  </div>
 
-    <!-- HOW IT WORKS -->
-    <div class="card">
-      <h3>Create a goal</h3>
-      <p>Start a stack for a trip, savings goal, or group fund.</p>
+  <!-- FEATURES -->
+  <div class="container section">
+    <div class="features">
+
+      <div class="card">
+        <h2>Create a stack</h2>
+        <p>
+          Set a goal for trips, savings, or anything you care about.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Invite friends</h2>
+        <p>
+          Stay accountable and build momentum together.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Track progress</h2>
+        <p>
+          See contributions grow and hit your goal faster.
+        </p>
+      </div>
+
     </div>
+  </div>
 
-    <div class="card">
-      <h3>Invite friends</h3>
-      <p>Save together and stay accountable.</p>
-    </div>
+  <!-- SOCIAL PROOF / VALUE -->
+  <div class="container section">
+    <h2>Why Stack?</h2>
+    <p>
+      People are more consistent when they’re not doing it alone.  
+      Stack makes saving social, visible, and motivating.
+    </p>
+  </div>
 
+  <!-- WAITLIST -->
+  <div class="container section">
     <div class="card">
-      <h3>Track progress</h3>
-      <p>See contributions and hit your goal faster.</p>
-    </div>
-
-    <!-- EMAIL CAPTURE -->
-    <div class="card">
-      <h3>Join early users 🚀</h3>
+      <h2>Join early users 🚀</h2>
+      <p>Be the first to try Stack.</p>
 
       <input type="email" placeholder="Enter your email" />
-      <button onclick="alert('We’ll be in touch!')">Join Waitlist</button>
+      <button onclick="alert('You’re on the list 🚀')">
+        Join Waitlist
+      </button>
     </div>
+  </div>
 
-    <div class="footer">
-      Built by Stack • 2026
-    </div>
-
+  <!-- FOOTER -->
+  <div class="footer">
+    Built by Stack • 2026
   </div>
 
 </body>
