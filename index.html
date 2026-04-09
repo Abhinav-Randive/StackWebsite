@@ -1,276 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stack — Save Together</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stack — Save Together</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- FIREBASE -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<style>
+:root {
+  --bg1: #ff4d8d;
+  --bg2: #7c3aed;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.75);
+  --glass: rgba(255,255,255,0.08);
+}
 
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-    };
+* {
+  box-sizing: border-box;
+}
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  color: var(--text);
+}
 
-    window.joinWaitlist = async function () {
-      const email = document.getElementById('email').value;
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 40px;
+  align-items: center;
+}
 
-      if (!email) {
-        alert("Enter a valid email");
-        return;
-      }
+.logo {
+  height: 70px;
+}
 
-      try {
-        await addDoc(collection(db, "waitlist"), {
-          email: email,
-          timestamp: new Date()
-        });
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-        alert("You're on the list 🚀");
-      } catch (err) {
-        console.error(err);
-        alert("Error — check console");
-      }
-    }
-  </script>
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
 
-  <style>
-    :root {
-      --text: #ffffff;
-      --muted: rgba(255,255,255,0.75);
-      --glass: rgba(255,255,255,0.08);
-    }
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+}
 
-    body {
-      margin: 0;
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #ff4d8d 0%, #7c3aed 100%);
-      color: var(--text);
-    }
+.hero h1 {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+.hero p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
 
-    /* NAV */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 30px;
-    }
+.cta {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: white;
+  color: #7c3aed;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
 
-    .logo-img {
-      height: 80px;
-    }
+.cta:hover {
+  transform: translateY(-2px);
+}
 
-    .nav-link {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
+.mockup {
+  width: 300px;
+  height: 600px;
+  border-radius: 40px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
 
-    /* HERO */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-      padding: 200px 30px;
-      flex-wrap: wrap;
-    }
+/* SOCIAL PROOF */
+.social {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgba(255,255,255,0.6);
+}
 
-    .hero-left {
-      flex: 1;
-      min-width: 300px;
-    }
+/* FEATURES */
+.section {
+  padding: 80px 40px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    .hero-right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 24px;
+}
 
-    h1 {
-      font-size: 72px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
+.card {
+  background: var(--glass);
+  padding: 28px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  transition: transform 0.25s ease;
+}
 
-    .hero-logo {
-      height: 200px;
-      margin-bottom: 20px;
-    }
+.card:hover {
+  transform: translateY(-6px);
+}
 
-    p {
-      font-size: 18px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+.card h3 {
+  margin-bottom: 10px;
+}
 
-    .cta {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 16px 26px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ffffff, #fbcfe8);
-      color: #7c3aed;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
+.card p {
+  color: var(--muted);
+}
 
-    /* MOCKUP */
-    .mockup {
-      width: 280px;
-      height: 560px;
-      border-radius: 30px;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
+/* BIG SECTION */
+.split {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    /* FEATURES */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+.split-text {
+  flex: 1;
+  min-width: 300px;
+}
 
-    .card {
-      background: var(--glass);
-      padding: 24px;
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-    }
+.split-text h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
 
-    h2 {
-      margin-bottom: 10px;
-    }
+.split-text p {
+  color: var(--muted);
+  line-height: 1.6;
+}
 
-    /* WAITLIST */
-    input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      margin-top: 10px;
-      background: rgba(0,0,0,0.3);
-      color: white;
-    }
+/* WAITLIST */
+.waitlist {
+  text-align: center;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border-radius: 999px;
-      border: none;
-      background: white;
-      color: #7c3aed;
-      margin-top: 10px;
-      font-weight: 800;
-      cursor: pointer;
-    }
+.input {
+  padding: 14px;
+  width: 300px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+}
 
-    .footer {
-      text-align: center;
-      margin: 60px 0;
-      color: rgba(255,255,255,0.6);
-    }
-  </style>
+.button {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: #7c3aed;
+  font-weight: 800;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 40px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ANIMATIONS */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav class="navbar">
-    <img src="logo1.svg" class="logo-img" />
-    <a href="#waitlist" class="nav-link">Join Waitlist</a>
-  </nav>
+<!-- NAV -->
+<div class="nav">
+  <img src="logo1.svg" class="logo">
+  <a href="#waitlist">Join Waitlist</a>
+</div>
 
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="hero-left">
-      <h1>Turn spending into progress</h1>
-      <img src="logo1.svg" class="hero-logo" />
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left fade">
+    <h1>Money works better together</h1>
 
-      <p>
-        Stack is a social fintech platform that helps young adults turn everyday spending 
-        into meaningful financial progress.
-      </p>
-
-      <p>
-        Create private circles with friends, set shared goals, and stay accountable—
-        whether you're saving for a trip, building an emergency fund, or investing.
-      </p>
-
-      <p>
-        We detect impulsive purchases in real time and nudge you to redirect that money 
-        into savings or investments—turning missed spending into real progress.
-      </p>
-
-      <a href="#waitlist" class="cta">Get Early Access</a>
-    </div>
-
-    <div class="hero-right">
-      <div class="mockup"></div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="container">
-    <div class="features">
-      <div class="card">
-        <h2>Create a circle</h2>
-        <p>Set shared financial goals with friends.</p>
-      </div>
-
-      <div class="card">
-        <h2>Track behavior</h2>
-        <p>Catch impulsive spending in real time.</p>
-      </div>
-
-      <div class="card">
-        <h2>Build momentum</h2>
-        <p>Stay accountable and grow together.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUE -->
-  <section class="container">
-    <h2>Why Stack?</h2>
     <p>
-      Saving is hard alone. Stack makes it social, visible, and motivating—
-      turning discipline into something you actually enjoy.
+      Stack is a social fintech platform that turns everyday spending into real financial progress.
     </p>
-  </section>
 
-  <!-- WAITLIST -->
-  <section id="waitlist" class="container">
+    <p>
+      Build private circles with friends, set shared goals, and stay accountable—
+      whether you're saving for a trip, investing, or building your future.
+    </p>
+
+    <a href="#waitlist" class="cta">Get Early Access</a>
+  </div>
+
+  <div class="mockup fade"></div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="social">
+  Built for the next generation of investors • Designed for real behavior
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="grid">
     <div class="card">
-      <h2>Join early users</h2>
-      <p>Be the first to experience Stack.</p>
-
-      <input id="email" type="email" placeholder="Enter your email" />
-      <button onclick="joinWaitlist()">Join Waitlist</button>
+      <h3>Social saving</h3>
+      <p>Turn financial goals into shared experiences with friends.</p>
     </div>
-  </section>
 
-  <div class="footer">Built by Stack • 2026</div>
+    <div class="card">
+      <h3>Real-time nudges</h3>
+      <p>Catch impulsive spending and redirect it instantly.</p>
+    </div>
+
+    <div class="card">
+      <h3>One-tap investing</h3>
+      <p>Convert skipped purchases into wealth automatically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROP -->
+<section class="section split">
+  <div class="split-text">
+    <h2>Saving is broken. We fix it.</h2>
+    <p>
+      Most financial tools assume discipline. We design for reality.
+      Stack combines behavioral psychology, real-time data, and social dynamics
+      to make saving effortless—and even addictive.
+    </p>
+  </div>
+
+  <div class="mockup"></div>
+</section>
+
+<!-- WAITLIST -->
+<section id="waitlist" class="section waitlist">
+  <h2>Join early users</h2>
+  <p>Be the first to experience Stack.</p>
+
+  <input class="input" id="email" type="email" placeholder="Enter email" />
+  <button class="button" onclick="joinWaitlist()">Join</button>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  Built by Stack • 2026
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.joinWaitlist = async function () {
+  const email = document.getElementById('email').value;
+
+  if (!email) {
+    alert("Enter valid email");
+    return;
+  }
+
+  await addDoc(collection(db, "waitlist"), {
+    email: email,
+    timestamp: new Date()
+  });
+
+  alert("You're in 🚀");
+}
+</script>
 
 </body>
 </html>
