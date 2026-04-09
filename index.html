@@ -33,14 +33,14 @@
           timestamp: new Date()
         });
 
-        alert("You're on the list 🚀");
+        alert("You're on the list");
       } catch (err) {
         console.error(err);
         alert("Error — check console");
       }
     }
   </script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+  
 
   <style>
     :root {
@@ -92,24 +92,10 @@
     }
 
     /* 🔥 BRAND TEXT LOGO STYLE (CANDICE FONT) */
-    @font-face {
-      font-family: 'Candice';
-      src: url('Candice.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
+    /* Brand logo uses SVG image */
     .brand {
-      font-family: 'Candice', cursive;
-      font-size: 1.1em;
-      color: #ff6fa5;
-      text-shadow:
-        2px 2px 0 #ff2d7a,
-        -2px 2px 0 #ff2d7a,
-        2px -2px 0 #ff2d7a,
-        -2px -2px 0 #ff2d7a,
-        0 6px 20px rgba(255, 45, 122, 0.4);
-      letter-spacing: 0px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .nav-link {
@@ -201,8 +187,8 @@
   <!-- NAV -->
   <nav class="navbar">
     <div class="logo">
-      <!-- 🔥 YOUR REAL LOGO -->
-      <div class="logo-text brand">Stack</div>
+      <img src="logo1.svg" alt="Stack logo" style="height:40px;" />
+    </div>
     </div>
 
     <a href="#waitlist" class="nav-link">Join Waitlist</a>
@@ -210,7 +196,7 @@
 
   <!-- HERO -->
   <section class="hero container">
-    <h1>Save money with <span class="brand">Stack</span>.</h1>
+    <h1>Save money with <span class="brand"><img src="logo1.svg" alt="Stack" style="height:1em;vertical-align:middle;"/></span>.</h1>
     <p>Turn everyday spending into shared progress.</p>
     <a href="#waitlist" class="cta">Get Early Access</a>
   </section>
@@ -244,7 +230,7 @@
   <!-- WAITLIST -->
   <section id="waitlist" class="container">
     <div class="card">
-      <h2>Join early users 🚀</h2>
+      <h2>Join early users</h2>
       <p>Be the first to try Stack.</p>
 
       <input id="email" type="email" placeholder="Enter your email" />
