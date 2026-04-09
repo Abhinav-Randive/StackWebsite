@@ -20,8 +20,40 @@
       padding: 40px 20px;
     }
 
+    /* 🔥 NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #4CAF50;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .nav-link {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
     h1 {
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 700;
       margin-bottom: 10px;
     }
@@ -38,7 +70,7 @@
 
     .hero {
       text-align: center;
-      padding: 80px 20px 60px;
+      padding: 60px 20px 60px;
     }
 
     .cta {
@@ -49,7 +81,7 @@
       font-size: 16px;
       text-decoration: none;
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
       font-weight: 600;
     }
 
@@ -108,6 +140,16 @@
 
 <body>
 
+  <!-- 🔥 NAVBAR WITH LOGO -->
+  <div class="navbar">
+    <div class="logo">
+      <div class="logo-box"></div>
+      <div class="logo-text">Stack</div>
+    </div>
+
+    <a href="#" class="nav-link">Join Waitlist</a>
+  </div>
+
   <!-- HERO -->
   <div class="hero container">
     <h1>Save money with friends.</h1>
@@ -146,7 +188,7 @@
     </div>
   </div>
 
-  <!-- SOCIAL PROOF / VALUE -->
+  <!-- VALUE -->
   <div class="container section">
     <h2>Why Stack?</h2>
     <p>
