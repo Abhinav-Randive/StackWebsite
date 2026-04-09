@@ -1,322 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stack — Save Together</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stack — Money works better together</title>
 
-  <!-- 🔥 FIREBASE (MODULAR SDK - FIXED) -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-    };
+<style>
+:root {
+  --bg1: #ff4d8d;
+  --bg2: #7c3aed;
+  --text: #fff;
+  --muted: rgba(255,255,255,0.75);
+  --glass: rgba(255,255,255,0.08);
+}
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  color: var(--text);
+  overflow-x: hidden;
+}
 
-    window.joinWaitlist = async function () {
-      const email = document.getElementById('email').value;
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 40px;
+  align-items: center;
+}
 
-      if (!email) {
-        alert("Enter a valid email");
-        return;
-      }
+.logo {
+  height: 70px;
+}
 
-      try {
-        await addDoc(collection(db, "waitlist"), {
-          email: email,
-          timestamp: new Date()
-        });
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-        alert("You're on the list");
-      } catch (err) {
-        console.error(err);
-        alert("Error — check console");
-      }
-    }
-  </script>
-  
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+}
 
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --primary: #22c55e;
-      --accent: #ff4d8d;
-      --text: #0f172a;
-      --muted: #64748b;
-    }
+.hero h1 {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.05;
+}
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%);
-      color: var(--text);
-    }
+.hero p {
+  color: var(--muted);
+  font-size: 18px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+.cta {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: white;
+  color: #7c3aed;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s;
+}
 
-    /* NAV */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 30px;
-    }
+.cta:hover {
+  transform: scale(1.05);
+}
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+.mockup {
+  width: 320px;
+  height: 640px;
+  border-radius: 40px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
 
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      opacity: 0.8;
-      transition: 0.2s;
-    }
+/* SECTIONS */
+.section {
+  padding: 100px 40px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    .nav-links a:hover {
-      opacity: 1;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 24px;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.card {
+  background: var(--glass);
+  padding: 28px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s;
+}
 
-    .logo-img {
-      height: 60px;
-      display: block;
-    }
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
 
-    
+.card p {
+  color: var(--muted);
+}
 
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-    }
+/* SPLIT */
+.split {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    /* 🔥 BRAND TEXT LOGO STYLE (CANDICE FONT) */
-    /* Brand logo uses SVG image */
-    .brand {
-      display: inline-flex;
-      align-items: center;
-    }
+.split-text {
+  flex: 1;
+}
 
-    .nav-link {
-      color: var(--muted);
-      text-decoration: none;
-    }
+.split-text h2 {
+  font-size: 44px;
+}
 
-    /* HERO */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-      padding: 120px 30px;
-      flex-wrap: wrap;
-    }
+.split-text p {
+  color: var(--muted);
+  line-height: 1.6;
+}
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 64px;
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
+/* WAITLIST */
+.waitlist {
+  text-align: center;
+}
 
-    .hero-left {
-      flex: 1;
-      min-width: 300px;
-    }
+.input {
+  padding: 14px;
+  width: 280px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+}
 
-    .hero-right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+.button {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: #7c3aed;
+  font-weight: 800;
+  margin-left: 10px;
+  cursor: pointer;
+}
 
-    .hero-title {
-      margin-bottom: 20px;
-    }
+/* ANIMATION BASE */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
 
-    .hero-logo {
-      height: 220px;
-      margin: 10px 0 20px;
-    }
-
-    .mockup {
-      width: 260px;
-      height: 520px;
-      border-radius: 30px;
-      background: linear-gradient(145deg, #1a233a, #0f172a);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .hero-logo {
-      height: 140px;
-      max-width: 90%;
-    }
-
-    h2 {
-      font-size: 26px;
-    }
-
-    p {
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, var(--primary), #16a34a);
-      padding: 14px 22px;
-      border-radius: 999px;
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: 700;
-      box-shadow: 0 10px 25px rgba(34,197,94,0.3);
-    }
-
-    /* GRID */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #ffffff;
-      padding: 24px;
-      border-radius: 20px;
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      margin-top: 10px;
-      background: #111;
-      color: white;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent), #ff2d7a);
-      color: white;
-      margin-top: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(255,45,122,0.3);
-    }
-
-    .footer {
-      text-align: center;
-      color: #666;
-      margin: 60px 0;
-    }
-  </style>
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="logo1.svg" alt="Stack logo" class="logo-img" />
+<!-- NAV -->
+<!-- NAV -->
+<div class="nav">
+  <img src="logo1.svg" class="logo">
+
+  <div style="display:flex; gap:24px; align-items:center;">
+    <a href="#about">About</a>
+    <a href="#waitlist">Waitlist</a>
+    <a href="https://www.linkedin.com/in/abhinav-randive" target="_blank">LinkedIn</a>
+    <a href="mailto:your@email.com">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left reveal">
+    <h1>Saving money alone doesn’t work.</h1>
+
+    <p>
+      Most people don’t fail because they lack tools — they fail because money decisions are emotional, impulsive, and social.
+    </p>
+
+    <p>
+      Stack turns your financial life into a shared experience. Create private circles, set goals together, and turn everyday spending into real progress.
+    </p>
+
+    <a href="#waitlist" class="cta">Get Early Access</a>
+  </div>
+
+  <div class="mockup reveal"></div>
+</section>
+
+<!-- INSIGHT -->
+<section class="section reveal">
+  <h2>The insight</h2>
+  <p>
+    People don’t save because they “should.” They save because of identity, peer pressure, and visibility.
+    We built Stack to make financial progress social, visible, and rewarding.
+  </p>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Circles, not accounts</h3>
+      <p>Create small private groups with friends and set shared financial goals.</p>
     </div>
 
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-      <a href="#waitlist">Join</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="hero-left">
-      <h1>Save money with</h1>
-      <img src="logo1.svg" alt="Stack" class="hero-logo" />
-      <p>Turn everyday spending into shared progress.</p>
-      <a href="#waitlist" class="cta">Get Early Access</a>
+    <div class="card reveal">
+      <h3>Catch spending in real time</h3>
+      <p>We detect impulsive purchases and intervene before money is lost.</p>
     </div>
 
-    <div class="hero-right">
-      <div class="mockup"></div>
+    <div class="card reveal">
+      <h3>Turn moments into money</h3>
+      <p>Redirect skipped spending into savings or investments instantly.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURES -->
-  <section id="features" class="container">
-    <div class="features">
-      <div class="card">
-        <h2>Create a stack</h2>
-        <p>Set a goal for trips, savings, or anything you care about.</p>
-      </div>
+<!-- VALUE PROP -->
+<section class="section split">
+  <div class="split-text reveal">
+    <h2>This is how people actually change behavior</h2>
+    <p>
+      Traditional fintech focuses on dashboards. Stack focuses on decisions.
+      By combining behavioral nudges with social accountability, we turn intent into action.
+    </p>
+  </div>
 
-      <div class="card">
-        <h2>Invite friends</h2>
-        <p>Stay accountable and build momentum together.</p>
-      </div>
+  <div class="mockup reveal"></div>
+</section>
 
-      <div class="card">
-        <h2>Track progress</h2>
-        <p>See contributions grow and hit your goal faster.</p>
-      </div>
-    </div>
-  </section>
+<!-- WHY NOW -->
+<section class="section reveal">
+  <h2>Why now</h2>
+  <p>
+    Gen Z is social-first, mobile-native, and financially anxious.
+    Existing tools don’t match how they behave — Stack does.
+  </p>
+</section>
 
-  <!-- VALUE -->
-  <section id="about" class="container">
-    <h2>About Stack</h2>
-    <p>People save better together. Stack makes money social, visible, and motivating.</p>
-  </section>
+<!-- WAITLIST -->
+<section id="waitlist" class="section waitlist reveal">
+  <h2>Join early users</h2>
+  <p>Be part of the first cohort building wealth together.</p>
 
-  <!-- WAITLIST -->
-  <section id="waitlist" class="container">
-    <div class="card">
-      <h2>Join early users</h2>
-      <p>Be the first to try Stack.</p>
+  <input class="input" id="email" type="email" placeholder="Enter email" />
+  <button class="button" onclick="joinWaitlist()">Join</button>
+</section>
 
-      <input id="email" type="email" placeholder="Enter your email" />
-      <button onclick="joinWaitlist()">Join Waitlist</button>
-    </div>
-  </section>
+<!-- FOOTER -->
+<div class="section" style="text-align:center; color:rgba(255,255,255,0.6);">
+  Built by Stack • 2026
+</div>
 
-  <section id="contact" class="container">
-    <h2>Contact</h2>
-    <p>Reach out via LinkedIn or email to learn more about Stack.</p>
-  </section>
+<!-- SCROLL ANIMATION SCRIPT -->
+<script>
+const reveals = document.querySelectorAll(".reveal");
 
-  <div class="footer">Built by Stack • 2026</div>
+function revealOnScroll() {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
 
-  
+    if (top < windowHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+</script>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.joinWaitlist = async function () {
+  const email = document.getElementById('email').value;
+
+  if (!email) {
+    alert("Enter valid email");
+    return;
+  }
+
+  await addDoc(collection(db, "waitlist"), {
+    email: email,
+    timestamp: new Date()
+  });
+
+  alert("You're in 🚀");
+}
+</script>
 
 </body>
 </html>
