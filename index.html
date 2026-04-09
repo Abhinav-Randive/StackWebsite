@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Stack — Save Together</title>
+<title>Stack — Money works better together</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -11,13 +11,9 @@
 :root {
   --bg1: #ff4d8d;
   --bg2: #7c3aed;
-  --text: #ffffff;
+  --text: #fff;
   --muted: rgba(255,255,255,0.75);
   --glass: rgba(255,255,255,0.08);
-}
-
-* {
-  box-sizing: border-box;
 }
 
 body {
@@ -25,6 +21,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   background: linear-gradient(135deg, var(--bg1), var(--bg2));
   color: var(--text);
+  overflow-x: hidden;
 }
 
 /* NAV */
@@ -50,7 +47,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 40px;
+  padding: 120px 40px;
   gap: 60px;
   flex-wrap: wrap;
 }
@@ -64,14 +61,13 @@ body {
   font-size: 72px;
   font-weight: 800;
   line-height: 1.05;
-  margin-bottom: 20px;
 }
 
 .hero p {
   color: var(--muted);
   font-size: 18px;
+  margin-top: 16px;
   line-height: 1.6;
-  margin-bottom: 10px;
 }
 
 .cta {
@@ -83,32 +79,25 @@ body {
   color: #7c3aed;
   font-weight: 800;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: all 0.2s;
 }
 
 .cta:hover {
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
 .mockup {
-  width: 300px;
-  height: 600px;
+  width: 320px;
+  height: 640px;
   border-radius: 40px;
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(20px);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
 }
 
-/* SOCIAL PROOF */
-.social {
-  text-align: center;
-  padding: 40px 20px;
-  color: rgba(255,255,255,0.6);
-}
-
-/* FEATURES */
+/* SECTIONS */
 .section {
-  padding: 80px 40px;
+  padding: 100px 40px;
   max-width: 1100px;
   margin: auto;
 }
@@ -124,22 +113,18 @@ body {
   padding: 28px;
   border-radius: 20px;
   backdrop-filter: blur(20px);
-  transition: transform 0.25s ease;
+  transition: all 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-}
-
-.card h3 {
-  margin-bottom: 10px;
+  transform: translateY(-8px) scale(1.02);
 }
 
 .card p {
   color: var(--muted);
 }
 
-/* BIG SECTION */
+/* SPLIT */
 .split {
   display: flex;
   gap: 60px;
@@ -149,12 +134,10 @@ body {
 
 .split-text {
   flex: 1;
-  min-width: 300px;
 }
 
 .split-text h2 {
-  font-size: 42px;
-  margin-bottom: 20px;
+  font-size: 44px;
 }
 
 .split-text p {
@@ -169,7 +152,7 @@ body {
 
 .input {
   padding: 14px;
-  width: 300px;
+  width: 280px;
   border-radius: 10px;
   border: none;
   margin-top: 20px;
@@ -186,25 +169,16 @@ body {
   cursor: pointer;
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 40px;
-  color: rgba(255,255,255,0.6);
-}
-
-/* ANIMATIONS */
-.fade {
+/* ANIMATION BASE */
+.reveal {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s forwards;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
@@ -219,76 +193,106 @@ body {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left fade">
-    <h1>Money works better together</h1>
+  <div class="hero-left reveal">
+    <h1>Saving money alone doesn’t work.</h1>
 
     <p>
-      Stack is a social fintech platform that turns everyday spending into real financial progress.
+      Most people don’t fail because they lack tools — they fail because money decisions are emotional, impulsive, and social.
     </p>
 
     <p>
-      Build private circles with friends, set shared goals, and stay accountable—
-      whether you're saving for a trip, investing, or building your future.
+      Stack turns your financial life into a shared experience. Create private circles, set goals together, and turn everyday spending into real progress.
     </p>
 
     <a href="#waitlist" class="cta">Get Early Access</a>
   </div>
 
-  <div class="mockup fade"></div>
+  <div class="mockup reveal"></div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<div class="social">
-  Built for the next generation of investors • Designed for real behavior
-</div>
+<!-- INSIGHT -->
+<section class="section reveal">
+  <h2>The insight</h2>
+  <p>
+    People don’t save because they “should.” They save because of identity, peer pressure, and visibility.
+    We built Stack to make financial progress social, visible, and rewarding.
+  </p>
+</section>
 
 <!-- FEATURES -->
 <section class="section">
   <div class="grid">
-    <div class="card">
-      <h3>Social saving</h3>
-      <p>Turn financial goals into shared experiences with friends.</p>
+    <div class="card reveal">
+      <h3>Circles, not accounts</h3>
+      <p>Create small private groups with friends and set shared financial goals.</p>
     </div>
 
-    <div class="card">
-      <h3>Real-time nudges</h3>
-      <p>Catch impulsive spending and redirect it instantly.</p>
+    <div class="card reveal">
+      <h3>Catch spending in real time</h3>
+      <p>We detect impulsive purchases and intervene before money is lost.</p>
     </div>
 
-    <div class="card">
-      <h3>One-tap investing</h3>
-      <p>Convert skipped purchases into wealth automatically.</p>
+    <div class="card reveal">
+      <h3>Turn moments into money</h3>
+      <p>Redirect skipped spending into savings or investments instantly.</p>
     </div>
   </div>
 </section>
 
 <!-- VALUE PROP -->
 <section class="section split">
-  <div class="split-text">
-    <h2>Saving is broken. We fix it.</h2>
+  <div class="split-text reveal">
+    <h2>This is how people actually change behavior</h2>
     <p>
-      Most financial tools assume discipline. We design for reality.
-      Stack combines behavioral psychology, real-time data, and social dynamics
-      to make saving effortless—and even addictive.
+      Traditional fintech focuses on dashboards. Stack focuses on decisions.
+      By combining behavioral nudges with social accountability, we turn intent into action.
     </p>
   </div>
 
-  <div class="mockup"></div>
+  <div class="mockup reveal"></div>
+</section>
+
+<!-- WHY NOW -->
+<section class="section reveal">
+  <h2>Why now</h2>
+  <p>
+    Gen Z is social-first, mobile-native, and financially anxious.
+    Existing tools don’t match how they behave — Stack does.
+  </p>
 </section>
 
 <!-- WAITLIST -->
-<section id="waitlist" class="section waitlist">
+<section id="waitlist" class="section waitlist reveal">
   <h2>Join early users</h2>
-  <p>Be the first to experience Stack.</p>
+  <p>Be part of the first cohort building wealth together.</p>
 
   <input class="input" id="email" type="email" placeholder="Enter email" />
   <button class="button" onclick="joinWaitlist()">Join</button>
 </section>
 
 <!-- FOOTER -->
-<div class="footer">
+<div class="section" style="text-align:center; color:rgba(255,255,255,0.6);">
   Built by Stack • 2026
 </div>
+
+<!-- SCROLL ANIMATION SCRIPT -->
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (top < windowHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+</script>
 
 <!-- FIREBASE -->
 <script type="module">
