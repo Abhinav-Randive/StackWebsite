@@ -141,7 +141,7 @@
   <!-- NAV -->
   <nav class="navbar">
     <div class="logo">
-      <!-- 🔥 YOUR REAL LOGO -->
+      <!-- LOGO -->
       <img src="logo.png" alt="Stack logo" />
       <div class="logo-text">Stack</div>
     </div>
@@ -151,7 +151,7 @@
 
   <!-- HERO -->
   <section class="hero container">
-    <h1>Save money with friends.</h1>
+    <h1>Save money with <span style="display:inline-flex;align-items:center;gap:8px;"><img src="logo.png" alt="Stack" style="height:1em;vertical-align:middle;"/>Stack</span>.</h1>
     <p>Turn everyday spending into shared progress.</p>
     <a href="#waitlist" class="cta">Get Early Access</a>
   </section>
@@ -195,16 +195,13 @@
 
   <div class="footer">Built by Stack • 2026</div>
 
-  <!-- 🔥 FIREBASE CONFIG -->
+  <!--  FIREBASE CONFIG -->
   <script>
     const firebaseConfig = {
-  apiKey: "AIzaSyA4hH3s_hw2Mm5xAtdHvygDvZJrqaKlzk4",
-  authDomain: "stack-bd031.firebaseapp.com",
-  projectId: "stack-bd031",
-  storageBucket: "stack-bd031.firebasestorage.app",
-  messagingSenderId: "59631077914",
-  appId: "1:59631077914:web:8cf60da353eb9536615fa3"
-};
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+    };
 
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
