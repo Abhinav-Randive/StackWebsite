@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stack — Save Together</title>
 
-  <!-- 🔥 FIREBASE SDK -->
+  <!-- FIREBASE SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
 
@@ -55,6 +55,16 @@
     .logo-text {
       font-size: 20px;
       font-weight: 700;
+    }
+
+    /* 🔥 BRAND TEXT LOGO STYLE */
+    .brand {
+      font-weight: 800;
+      background: linear-gradient(135deg, #ff6fa5, #ff2d7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(255, 45, 122, 0.4);
+      letter-spacing: -0.5px;
     }
 
     .nav-link {
@@ -141,9 +151,8 @@
   <!-- NAV -->
   <nav class="navbar">
     <div class="logo">
-      <!-- LOGO -->
-      <img src="logo.png" alt="Stack logo" />
-      <div class="logo-text">Stack</div>
+      <!-- 🔥 YOUR REAL LOGO -->
+      <div class="logo-text brand">Stack</div>
     </div>
 
     <a href="#waitlist" class="nav-link">Join Waitlist</a>
@@ -151,7 +160,7 @@
 
   <!-- HERO -->
   <section class="hero container">
-    <h1>Save money with <span style="display:inline-flex;align-items:center;gap:8px;"><img src="logo.png" alt="Stack" style="height:1em;vertical-align:middle;"/>Stack</span>.</h1>
+    <h1>Save money with <span class="brand">Stack</span>.</h1>
     <p>Turn everyday spending into shared progress.</p>
     <a href="#waitlist" class="cta">Get Early Access</a>
   </section>
@@ -195,7 +204,7 @@
 
   <div class="footer">Built by Stack • 2026</div>
 
-  <!--  FIREBASE CONFIG -->
+  <!-- 🔥 FIREBASE CONFIG -->
   <script>
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
