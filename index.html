@@ -79,11 +79,15 @@
       gap: 10px;
     }
 
-    .logo img {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      object-fit: cover;
+    .logo-img {
+      height: 60px;
+      display: block;
+    }
+
+    .logo-inline {
+      height: 1.4em;
+      vertical-align: middle;
+      margin: 0 6px;
     }
 
     .logo-text {
@@ -187,7 +191,7 @@
   <!-- NAV -->
   <nav class="navbar">
     <div class="logo">
-      <img src="logo1.svg" alt="Stack logo" style="height:40px;" />
+      <img src="logo1.svg" alt="Stack logo" class="logo-img" />
     </div>
     </div>
 
@@ -196,7 +200,7 @@
 
   <!-- HERO -->
   <section class="hero container">
-    <h1>Save money with <span class="brand"><img src="logo1.svg" alt="Stack" style="height:1em;vertical-align:middle;"/></span>.</h1>
+    <h1>Save money with <span class="brand"><img src="logo1.svg" alt="Stack" class="logo-inline"/></span>.</h1>
     <p>Turn everyday spending into shared progress.</p>
     <a href="#waitlist" class="cta">Get Early Access</a>
   </section>
