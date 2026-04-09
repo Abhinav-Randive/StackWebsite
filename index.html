@@ -84,11 +84,7 @@
       display: block;
     }
 
-    .logo-inline {
-      height: 1.4em;
-      vertical-align: middle;
-      margin: 0 6px;
-    }
+    
 
     .logo-text {
       font-size: 20px;
@@ -117,6 +113,17 @@
       font-size: 60px;
       margin-bottom: 10px;
       line-height: 1.1;
+    }
+
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-logo {
+      height: 80px;
     }
 
     h2 {
@@ -200,7 +207,10 @@
 
   <!-- HERO -->
   <section class="hero container">
-    <h1>Save money with <span class="brand"><img src="logo1.svg" alt="Stack" class="logo-inline"/></span>.</h1>
+    <h1 class="hero-title">
+      Save money with<br/>
+      <img src="logo1.svg" alt="Stack" class="hero-logo" />
+    </h1>
     <p>Turn everyday spending into shared progress.</p>
     <a href="#waitlist" class="cta">Get Early Access</a>
   </section>
