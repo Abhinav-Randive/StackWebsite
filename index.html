@@ -5,26 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Stack — Money works better together</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
+/* ===== FONTS ===== */
+@font-face {
+  font-family: 'New Spirit';
+  src: url('./fonts/NewSpirit-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'New Spirit';
+  src: url('./fonts/NewSpirit-Bold.woff2') format('woff2');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Pangram';
+  src: url('./fonts/Pangram-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Pangram';
+  src: url('./fonts/Pangram-Medium.woff2') format('woff2');
+  font-weight: 600;
+}
+
+/* ===== COLORS ===== */
 :root {
-  --bg1: #ff4d8d;
-  --bg2: #7c3aed;
-  --text: #fff;
+  --bg1: #ff3c83;
+  --bg2: #00c27a;
+  --text: #ffffff;
   --muted: rgba(255,255,255,0.75);
   --glass: rgba(255,255,255,0.08);
 }
 
+/* ===== BASE ===== */
 body {
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Pangram', sans-serif;
   background: linear-gradient(135deg, var(--bg1), var(--bg2));
   color: var(--text);
-  overflow-x: hidden;
 }
 
-/* NAV */
+h1, h2, h3 {
+  font-family: 'New Spirit', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ===== NAV ===== */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -33,39 +62,32 @@ body {
 }
 
 .logo {
-  height: 70px;
+  height: 60px;
 }
 
-.nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* HERO */
+/* ===== HERO ===== */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 120px 40px;
-  gap: 60px;
   flex-wrap: wrap;
 }
 
 .hero-left {
-  flex: 1;
   max-width: 600px;
 }
 
 .hero h1 {
-  font-size: 72px;
+  font-size: 68px;
   font-weight: 800;
   line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .hero p {
-  color: var(--muted);
   font-size: 18px;
+  color: var(--muted);
   margin-top: 16px;
   line-height: 1.6;
 }
@@ -76,26 +98,17 @@ body {
   padding: 16px 28px;
   border-radius: 999px;
   background: white;
-  color: #7c3aed;
-  font-weight: 800;
+  color: black;
+  font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
 
 .cta:hover {
   transform: scale(1.05);
 }
 
-.mockup {
-  width: 320px;
-  height: 640px;
-  border-radius: 40px;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-}
-
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 .section {
   padding: 100px 40px;
   max-width: 1100px;
@@ -113,46 +126,25 @@ body {
   padding: 28px;
   border-radius: 20px;
   backdrop-filter: blur(20px);
-  transition: all 0.3s;
+  transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-6px);
 }
 
 .card p {
   color: var(--muted);
 }
 
-/* SPLIT */
-.split {
-  display: flex;
-  gap: 60px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.split-text {
-  flex: 1;
-}
-
-.split-text h2 {
-  font-size: 44px;
-}
-
-.split-text p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* WAITLIST */
+/* ===== WAITLIST ===== */
 .waitlist {
   text-align: center;
 }
 
 .input {
   padding: 14px;
-  width: 280px;
+  width: 260px;
   border-radius: 10px;
   border: none;
   margin-top: 20px;
@@ -163,17 +155,17 @@ body {
   border-radius: 999px;
   border: none;
   background: white;
-  color: #7c3aed;
-  font-weight: 800;
+  color: black;
+  font-weight: 700;
   margin-left: 10px;
   cursor: pointer;
 }
 
-/* ANIMATION BASE */
+/* ===== ANIMATION ===== */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.8s ease;
+  transition: 0.8s;
 }
 
 .reveal.active {
@@ -185,115 +177,66 @@ body {
 
 <body>
 
-
 <!-- NAV -->
 <div class="nav">
   <img src="logo1.svg" class="logo">
-
-  <div style="display:flex; gap:24px; align-items:center;">
-    <a href="#about">About</a>
-    <a href="#waitlist">Waitlist</a>
-    <a href="https://www.linkedin.com/company/s1ack/" target="_blank">LinkedIn</a>
-    <a href="arandive27@wooster.edu">Contact</a>
-  </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left reveal">
-    <h1>Saving money alone doesn’t work.</h1>
+
+    <h1>Save money with your friends.</h1>
 
     <p>
-      Most people don’t fail because they lack tools — they fail because money decisions are emotional, impulsive, and social.
+      Stack is a social finance app where you create private groups, track spending together, 
+      and turn everyday decisions into savings.
     </p>
 
     <p>
-      Stack turns your financial life into a shared experience. Create private circles, set goals together, and turn everyday spending into real progress.
+      Instead of budgeting alone, you stay accountable with people you trust — and actually follow through.
     </p>
 
-    <a href="#waitlist" class="cta">Get Early Access</a>
+    <a href="#waitlist" class="cta">Join the Waitlist</a>
   </div>
-
-  <div class="mockup reveal"></div>
-</section>
-
-<!-- INSIGHT -->
-<section class="section reveal">
-  <h2>The insight</h2>
-  <p>
-    People don’t save because they “should.” They save because of identity, peer pressure, and visibility.
-    We built Stack to make financial progress social, visible, and rewarding.
-  </p>
 </section>
 
 <!-- FEATURES -->
 <section class="section">
   <div class="grid">
+
     <div class="card reveal">
-      <h3>Circles, not accounts</h3>
-      <p>Create small private groups with friends and set shared financial goals.</p>
+      <h3>Private circles</h3>
+      <p>Create small groups with friends around shared goals.</p>
     </div>
 
     <div class="card reveal">
-      <h3>Catch spending in real time</h3>
-      <p>We detect impulsive purchases and intervene before money is lost.</p>
+      <h3>Real-time nudges</h3>
+      <p>Get alerted before impulsive spending decisions.</p>
     </div>
 
     <div class="card reveal">
-      <h3>Turn moments into money</h3>
-      <p>Redirect skipped spending into savings or investments instantly.</p>
+      <h3>Instant redirects</h3>
+      <p>Turn skipped spending into savings automatically.</p>
     </div>
+
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- VALUE -->
 <section class="section reveal">
-  <h2>How it works</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>1. Create a circle</h3>
-      <p>Start a private group with friends around a shared goal.</p>
-    </div>
-
-    <div class="card">
-      <h3>2. Track behavior</h3>
-      <p>We detect spending patterns and highlight risky moments.</p>
-    </div>
-
-    <div class="card">
-      <h3>3. Redirect money</h3>
-      <p>Turn skipped spending into savings or investments instantly.</p>
-    </div>
-  </div>
-</section>
-
-<!-- VALUE PROP -->
-<section class="section split">
-  <div class="split-text reveal">
-    <h2>This is how people actually change behavior</h2>
-    <p>
-      Traditional fintech focuses on dashboards. Stack focuses on decisions.
-      By combining behavioral nudges with social accountability, we turn intent into action.
-    </p>
-  </div>
-
-  <div class="mockup reveal"></div>
-</section>
-
-<!-- WHY NOW -->
-<section class="section reveal">
-  <h2>Why now</h2>
+  <h2>Behavior > budgeting</h2>
   <p>
-    Gen Z is social-first, mobile-native, and financially anxious.
-    Existing tools don’t match how they behave — Stack does.
+    Most people don’t fail because of tools. They fail because of behavior.
+    Stack combines social pressure, real-time nudges, and shared accountability 
+    to help you actually follow through.
   </p>
 </section>
 
 <!-- WAITLIST -->
 <section id="waitlist" class="section waitlist reveal">
-  <h2>Join early users</h2>
-  <p>Be part of the first cohort building wealth together.</p>
+  <h2>Join the waitlist</h2>
+  <p>Be one of the first users.</p>
 
   <input class="input" id="email" type="email" placeholder="Enter email" />
   <button class="button" onclick="joinWaitlist()">Join</button>
@@ -304,7 +247,7 @@ body {
   Built by Stack • 2026
 </div>
 
-<!-- SCROLL ANIMATION SCRIPT -->
+<!-- SCRIPT -->
 <script>
 const reveals = document.querySelectorAll(".reveal");
 
@@ -321,35 +264,13 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
-</script>
 
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-window.joinWaitlist = async function () {
+function joinWaitlist() {
   const email = document.getElementById('email').value;
-
   if (!email) {
     alert("Enter valid email");
     return;
   }
-
-  await addDoc(collection(db, "waitlist"), {
-    email: email,
-    timestamp: new Date()
-  });
-
   alert("You're in 🚀");
 }
 </script>
