@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Stack — Money works better together</title>
 
+<!-- ICONS -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
+
 /* ===== FONTS ===== */
 @font-face {
   font-family: 'New Spirit';
@@ -22,13 +26,6 @@
 @font-face {
   font-family: 'Pangram';
   src: url('./fonts/Pangram-Regular.woff2') format('woff2');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Pangram';
-  src: url('./fonts/Pangram-Medium.woff2') format('woff2');
-  font-weight: 600;
 }
 
 /* ===== COLORS ===== */
@@ -63,6 +60,7 @@ h1, h2, h3 {
 
 .logo {
   height: 60px;
+  mix-blend-mode: multiply; /* fixes white bg */
 }
 
 /* ===== HERO ===== */
@@ -75,7 +73,7 @@ h1, h2, h3 {
 }
 
 .hero-left {
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .hero h1 {
@@ -137,6 +135,20 @@ h1, h2, h3 {
   color: var(--muted);
 }
 
+/* ICONS */
+.card i {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+  color: white;
+  opacity: 0.9;
+}
+
+/* ===== VALUE ===== */
+.value p {
+  max-width: 700px;
+}
+
 /* ===== WAITLIST ===== */
 .waitlist {
   text-align: center;
@@ -172,6 +184,7 @@ h1, h2, h3 {
   opacity: 1;
   transform: translateY(0);
 }
+
 </style>
 </head>
 
@@ -179,22 +192,22 @@ h1, h2, h3 {
 
 <!-- NAV -->
 <div class="nav">
-  <img src="logo1.svg" class="logo">
+  <img src="logo1.png" class="logo">
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left reveal">
 
-    <h1>Save money with your friends.</h1>
+    <h1>Saving works better when it’s social.</h1>
 
     <p>
-      Stack is a social finance app where you create private groups, track spending together, 
-      and turn everyday decisions into savings.
+      Stack is a social finance app where you create circles with friends, 
+      track progress together, and stay accountable.
     </p>
 
     <p>
-      Instead of budgeting alone, you stay accountable with people you trust — and actually follow through.
+      When your money is visible to people you trust, you actually follow through.
     </p>
 
     <a href="#waitlist" class="cta">Join the Waitlist</a>
@@ -206,30 +219,37 @@ h1, h2, h3 {
   <div class="grid">
 
     <div class="card reveal">
-      <h3>Private circles</h3>
-      <p>Create small groups with friends around shared goals.</p>
+      <i data-lucide="users"></i>
+      <h3>Circles</h3>
+      <p>Private groups where you and your friends save toward shared goals.</p>
     </div>
 
     <div class="card reveal">
-      <h3>Real-time nudges</h3>
-      <p>Get alerted before impulsive spending decisions.</p>
+      <i data-lucide="eye"></i>
+      <h3>Shared visibility</h3>
+      <p>See how your friends are doing. Progress is visible — so you stay accountable.</p>
     </div>
 
     <div class="card reveal">
-      <h3>Instant redirects</h3>
-      <p>Turn skipped spending into savings automatically.</p>
+      <i data-lucide="repeat"></i>
+      <h3>Redirect spending</h3>
+      <p>Turn skipped purchases into shared progress instantly.</p>
     </div>
 
   </div>
 </section>
 
 <!-- VALUE -->
-<section class="section reveal">
-  <h2>Behavior > budgeting</h2>
+<section class="section value reveal">
+  <h2>Money is a social behavior</h2>
+
   <p>
-    Most people don’t fail because of tools. They fail because of behavior.
-    Stack combines social pressure, real-time nudges, and shared accountability 
-    to help you actually follow through.
+    Most people don’t fail because they don’t know what to do. 
+    They fail because no one sees their decisions.
+  </p>
+
+  <p>
+    Stack makes saving visible, shared, and social — so you actually stick to it.
   </p>
 </section>
 
@@ -264,6 +284,8 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
+
+lucide.createIcons();
 
 function joinWaitlist() {
   const email = document.getElementById('email').value;
