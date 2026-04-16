@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Stack — Money works better together</title>
 
-<!-- ICONS -->
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
@@ -14,7 +13,6 @@
 @font-face {
   font-family: 'New Spirit';
   src: url('./fonts/NewSpirit-Regular.woff2') format('woff2');
-  font-weight: 400;
 }
 
 @font-face {
@@ -30,18 +28,17 @@
 
 /* ===== COLORS ===== */
 :root {
-  --bg1: #ff3c83;
-  --bg2: #00c27a;
+  --green: #00c27a;
+  --pink: #ff3c83;
   --text: #ffffff;
   --muted: rgba(255,255,255,0.75);
-  --glass: rgba(255,255,255,0.08);
 }
 
 /* ===== BASE ===== */
 body {
   margin: 0;
   font-family: 'Pangram', sans-serif;
-  background: linear-gradient(180deg, var(--bg2), var(--bg1));  
+  background: linear-gradient(180deg, #00c27a 0%, #ff3c83 100%);
   color: var(--text);
 }
 
@@ -52,34 +49,35 @@ h1, h2, h3 {
 
 /* ===== NAV ===== */
 .nav {
-  display: flex;
-  justify-content: space-between;
   padding: 24px 40px;
-  align-items: center;
+}
+
+/* LOGO FIXED */
+.logo-wrapper {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
   height: 90px;
-  mix-blend-mode: multiply; /* fixes white bg */
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
-
+  display: block;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35));
 }
 
 /* ===== HERO ===== */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 120px 40px;
-  flex-wrap: wrap;
+  padding: 100px 40px 80px 40px;
 }
 
 .hero-left {
-  max-width: 620px;
+  max-width: 650px;
 }
 
 .hero h1 {
-  font-size: 68px;
+  font-size: 72px;
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -88,24 +86,27 @@ h1, h2, h3 {
 .hero p {
   font-size: 18px;
   color: var(--muted);
-  margin-top: 16px;
+  margin-top: 18px;
   line-height: 1.6;
+  max-width: 520px;
 }
 
+/* CTA IMPROVED */
 .cta {
-  margin-top: 30px;
+  margin-top: 32px;
   display: inline-block;
-  padding: 16px 28px;
+  padding: 16px 30px;
   border-radius: 999px;
   background: white;
   color: black;
   font-weight: 700;
   text-decoration: none;
-  transition: 0.2s;
+  transition: all 0.2s;
 }
 
 .cta:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 
 /* ===== SECTIONS ===== */
@@ -122,7 +123,7 @@ h1, h2, h3 {
 }
 
 .card {
-  background: var(--glass);
+  background: rgba(255,255,255,0.08);
   padding: 28px;
   border-radius: 20px;
   backdrop-filter: blur(20px);
@@ -143,7 +144,6 @@ h1, h2, h3 {
   height: 32px;
   margin-bottom: 12px;
   color: white;
-  opacity: 0.9;
 }
 
 /* ===== VALUE ===== */
@@ -194,7 +194,9 @@ h1, h2, h3 {
 
 <!-- NAV -->
 <div class="nav">
-  <img src="logo1.svg" class="logo">
+  <div class="logo-wrapper">
+    <img src="logo1.svg" class="logo">
+  </div>
 </div>
 
 <!-- HERO -->
@@ -229,7 +231,7 @@ h1, h2, h3 {
     <div class="card reveal">
       <i data-lucide="eye"></i>
       <h3>Shared visibility</h3>
-      <p>See how your friends are doing. Progress is visible — so you stay accountable.</p>
+      <p>Progress is visible — so you actually stay accountable.</p>
     </div>
 
     <div class="card reveal">
@@ -269,7 +271,6 @@ h1, h2, h3 {
   Built by Stack • 2026
 </div>
 
-<!-- SCRIPT -->
 <script>
 const reveals = document.querySelectorAll(".reveal");
 
