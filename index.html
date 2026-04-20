@@ -352,11 +352,6 @@ summary:focus-visible {
   overflow-wrap: anywhere;
 }
 
-.section-head code {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
@@ -558,15 +553,6 @@ summary:focus-visible {
   color: var(--subtext);
   margin-top: 6px;
   line-height: 1.35;
-}
-
-.preview-copy {
-  max-width: 420px;
-}
-
-.preview-copy p {
-  color: var(--subtext);
-  line-height: 1.65;
 }
 
 .link-accent {
@@ -948,14 +934,11 @@ summary:focus-visible {
   </div>
 </section>
 
-<!-- PREVIEW (UI aligned with stack-app / Dashboard) -->
-<section id="preview" class="section">
-  <div class="section-head reveal">
-    <h2>Same UI as the Stack app</h2>
-    <p>This mock matches the mint gradient, cards, and Home dashboard hero from <code style="font-size:0.92em;background:rgba(76,175,80,0.12);padding:2px 6px;border-radius:6px;">stack-app</code> — white surfaces, green accents, soft borders.</p>
-  </div>
+<!-- PREVIEW -->
+<section id="preview" class="section section--preview">
+  <h2 class="visually-hidden">App preview</h2>
   <div class="preview-wrap reveal">
-    <div class="phone" aria-hidden="true">
+    <div class="phone" role="img" aria-label="Stack app Home screen preview">
       <div class="phone-screen phone-screen--app">
         <div class="app-shell">
           <div class="app-top">
@@ -990,9 +973,6 @@ summary:focus-visible {
           </div>
         </div>
       </div>
-    </div>
-    <div class="preview-copy">
-      <p>Colors and components mirror <strong>theme.js</strong> and the signed-in Home screen: hero card, stat tiles, and primary / secondary buttons.</p>
     </div>
   </div>
 </section>
