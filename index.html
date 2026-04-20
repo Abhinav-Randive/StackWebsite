@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Stack — Money works better together</title>
 <meta name="description" content="Stack is a social finance app: save with friends in private circles, share progress, and stay accountable." />
 <meta name="theme-color" content="#4CAF50" />
@@ -57,12 +57,18 @@
 /* ===== BASE ===== */
 *, *::before, *::after { box-sizing: border-box; }
 
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   font-family: 'Pangram', system-ui, sans-serif;
   background: linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 45%, var(--bg-c) 100%);
   color: var(--ink);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -102,10 +108,15 @@ summary:focus-visible {
   z-index: 1000;
 
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
 
   padding: 16px 40px;
+  padding-top: calc(16px + env(safe-area-inset-top, 0px));
+  padding-left: calc(40px + env(safe-area-inset-left, 0px));
+  padding-right: calc(40px + env(safe-area-inset-right, 0px));
 
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(10px);
@@ -121,12 +132,52 @@ summary:focus-visible {
 
 .logo {
   height: 60px;
+  width: auto;
+  max-width: min(180px, 52vw);
   display: block;
+  object-fit: contain;
 }
 
 .nav-left a {
   text-decoration: none;
   color: inherit;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px auto;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.nav--open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav--open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav--open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* RIGHT NAV */
@@ -144,21 +195,55 @@ summary:focus-visible {
   font-weight: 600;
   font-size: 14px;
   transition: opacity 0.2s;
+  padding: 8px 4px;
+  display: inline-flex;
+  align-items: center;
+  touch-action: manipulation;
 }
 
 .nav-right a:hover {
   opacity: 0.6;
 }
 
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-right {
+    display: none;
+    flex: 1 0 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav--open .nav-right {
+    display: flex;
+  }
+
+  .nav-right a {
+    padding: 14px 10px;
+    min-height: 48px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+
+  .nav-right a:active {
+    background: var(--accent-soft);
+  }
+}
+
 @media (max-width: 720px) {
   .nav {
     padding: 12px 20px;
-  }
-  .nav-right {
-    gap: 10px 16px;
-  }
-  .nav-right a {
-    font-size: 13px;
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+    padding-left: calc(20px + env(safe-area-inset-left, 0px));
+    padding-right: calc(20px + env(safe-area-inset-right, 0px));
   }
   .logo {
     height: 48px;
@@ -175,14 +260,15 @@ summary:focus-visible {
 }
 
 .hero h1 {
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: clamp(32px, 7vw, 72px);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
+  word-wrap: break-word;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
   color: var(--subtext);
   margin-top: 18px;
   line-height: 1.6;
@@ -194,12 +280,15 @@ summary:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  align-items: center;
+  align-items: stretch;
 }
 
 /* CTA (matches APP_STYLES.primaryButton / secondaryButton) */
 .cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
   padding: 14px 22px;
   border-radius: 14px;
   background: var(--accent);
@@ -208,6 +297,7 @@ summary:focus-visible {
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   box-shadow: var(--shadow);
+  touch-action: manipulation;
 }
 
 .cta:hover {
@@ -217,7 +307,10 @@ summary:focus-visible {
 }
 
 .cta-secondary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
   padding: 14px 22px;
   border-radius: 14px;
   border: 1.5px solid var(--accent);
@@ -226,6 +319,7 @@ summary:focus-visible {
   text-decoration: none;
   background: transparent;
   transition: background 0.2s, color 0.2s;
+  touch-action: manipulation;
 }
 
 .cta-secondary:hover {
@@ -244,15 +338,28 @@ summary:focus-visible {
   margin-bottom: 40px;
 }
 
+.section-head h2 {
+  font-size: clamp(26px, 5vw, 40px);
+  line-height: 1.15;
+  word-wrap: break-word;
+}
+
 .section-head p {
   color: var(--subtext);
   line-height: 1.65;
   margin-top: 12px;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.section-head code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 24px;
 }
 
@@ -476,7 +583,7 @@ summary:focus-visible {
 /* ===== STEPS ===== */
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 20px;
   counter-reset: step;
 }
@@ -539,6 +646,11 @@ summary:focus-visible {
   font-size: 16px;
   list-style: none;
   color: var(--ink);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  touch-action: manipulation;
 }
 
 .faq summary::-webkit-details-marker {
@@ -563,6 +675,9 @@ summary:focus-visible {
 
 .value h2 {
   color: var(--ink);
+  font-size: clamp(26px, 5vw, 40px);
+  line-height: 1.15;
+  word-wrap: break-word;
 }
 
 /* ===== WAITLIST ===== */
@@ -576,7 +691,7 @@ summary:focus-visible {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 24px;
-  padding: 36px 28px 40px;
+  padding: 36px calc(28px + env(safe-area-inset-right, 0px)) 40px calc(28px + env(safe-area-inset-left, 0px));
   box-shadow: var(--shadow);
 }
 
@@ -594,14 +709,16 @@ summary:focus-visible {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 .input {
   padding: 14px 16px;
-  min-width: min(320px, 100%);
+  min-width: 0;
+  width: 100%;
   max-width: 100%;
-  flex: 1 1 260px;
+  flex: 1 1 200px;
+  min-height: 48px;
   border-radius: 14px;
   border: 1px solid var(--border);
   font-family: inherit;
@@ -612,6 +729,7 @@ summary:focus-visible {
 
 .button {
   padding: 14px 24px;
+  min-height: 48px;
   border-radius: 14px;
   border: none;
   background: var(--accent);
@@ -621,6 +739,8 @@ summary:focus-visible {
   font-family: inherit;
   font-size: 16px;
   box-shadow: var(--shadow);
+  touch-action: manipulation;
+  flex: 0 0 auto;
 }
 
 .button:hover:not(:disabled) {
@@ -652,12 +772,15 @@ summary:focus-visible {
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
-  padding: 48px 40px 64px;
+  padding: 48px 40px calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-left: calc(40px + env(safe-area-inset-left, 0px));
+  padding-right: calc(40px + env(safe-area-inset-right, 0px));
   color: var(--subtext);
   font-size: 14px;
   line-height: 1.7;
   border-top: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.6);
+  overflow-wrap: anywhere;
 }
 
 .footer-links {
@@ -679,6 +802,16 @@ summary:focus-visible {
   color: var(--accent-dark);
 }
 
+@media (max-width: 768px) {
+  .footer-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 4px;
+  }
+}
+
 /* ===== ANIMATION ===== */
 .reveal {
   opacity: 0;
@@ -693,10 +826,62 @@ summary:focus-visible {
 
 @media (max-width: 540px) {
   .section {
-    padding: 72px 20px;
+    padding: 56px 18px;
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
   }
   .hero {
-    padding: 72px 20px 56px;
+    padding: 56px 18px 48px;
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+  }
+
+  .hero-cta-row .cta,
+  .hero-cta-row .cta-secondary {
+    width: 100%;
+  }
+
+  .waitlist-form {
+    flex-direction: column;
+  }
+
+  .waitlist-form .button {
+    width: 100%;
+  }
+
+  .waitlist-card {
+    padding: 28px 20px 32px;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  .footer {
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
+  }
+
+  .app-hero-actions {
+    flex-direction: column;
+  }
+
+  .app-btn {
+    width: 100%;
+  }
+
+  .app-row2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
@@ -708,14 +893,27 @@ summary:focus-visible {
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- NAV -->
-<div class="nav">
+<div class="nav" id="site-nav">
   <div class="nav-left">
     <a href="#top" aria-label="Stack home">
       <img src="logo1.svg" class="logo" alt="Stack logo" width="180" height="60" />
     </a>
   </div>
 
-  <div class="nav-right">
+  <button
+    type="button"
+    class="nav-toggle"
+    id="nav-toggle"
+    aria-expanded="false"
+    aria-controls="primary-nav"
+    aria-label="Open menu"
+  >
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+  </button>
+
+  <nav class="nav-right" id="primary-nav" aria-label="Primary">
     <a href="#preview">Preview</a>
     <a href="#features">Features</a>
     <a href="#how">How it works</a>
@@ -723,7 +921,7 @@ summary:focus-visible {
     <a href="#privacy">Privacy</a>
     <a href="#waitlist">Waitlist</a>
     <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  </div>
+  </nav>
 </div>
 
 <main id="main">
@@ -1008,6 +1206,40 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 lucide.createIcons();
+
+(function () {
+  const nav = document.getElementById("site-nav");
+  const toggle = document.getElementById("nav-toggle");
+  const panel = document.getElementById("primary-nav");
+  if (!nav || !toggle || !panel) return;
+
+  function setOpen(open) {
+    nav.classList.toggle("nav--open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  toggle.addEventListener("click", function () {
+    setOpen(!nav.classList.contains("nav--open"));
+  });
+
+  panel.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setOpen(false);
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  var mq = window.matchMedia("(min-width: 769px)");
+  function onMq() {
+    if (mq.matches) setOpen(false);
+  }
+  mq.addEventListener("change", onMq);
+  window.addEventListener("resize", onMq);
+})();
 
 function isWaitlistConfigured() {
   return STACK_WAITLIST_EMAIL && !STACK_WAITLIST_EMAIL.includes('YOUR_EMAIL');
