@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Stack — Money works better together</title>
 <meta name="description" content="Stack is a social finance app: save with friends in private circles, share progress, and stay accountable." />
-<meta name="theme-color" content="#00c27a" />
+<meta name="theme-color" content="#4CAF50" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Stack — Money works better together" />
 <meta property="og:description" content="Saving works better when it's social. Circles, shared visibility, and goals you actually stick to." />
@@ -34,12 +34,24 @@
   src: url('./fonts/Pangram-Regular.woff2') format('woff2');
 }
 
-/* ===== COLORS ===== */
+/* ===== COLORS (from stack-app/theme.js) ===== */
 :root {
-  --green: #00c27a;
-  --pink: #ff3c83;
-  --text: #ffffff;
-  --muted: rgba(255,255,255,0.75);
+  --bg-a: #f4fbf5;
+  --bg-b: #eff8f1;
+  --bg-c: #ffffff;
+  --surface: #ffffff;
+  --ink: #000000;
+  --subtext: #4a4a4a;
+  --muted: #9e9e9e;
+  --border: #e0e0e0;
+  --accent: #4caf50;
+  --accent-dark: #388e3c;
+  --accent2: #66bb6a;
+  --accent-soft: rgba(76, 175, 80, 0.1);
+  --hero-card: rgba(102, 187, 106, 0.16);
+  --hero-border: rgba(102, 187, 106, 0.45);
+  --danger: #ff7d92;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* ===== BASE ===== */
@@ -47,9 +59,10 @@
 
 body {
   margin: 0;
-  font-family: 'Pangram', sans-serif;
-  background: linear-gradient(180deg, #00c27a 0%, #ff3c83 100%);
-  color: var(--text);
+  font-family: 'Pangram', system-ui, sans-serif;
+  background: linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 45%, var(--bg-c) 100%);
+  color: var(--ink);
+  min-height: 100vh;
 }
 
 h1, h2, h3 {
@@ -61,8 +74,8 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 3px;
+  outline: 3px solid var(--accent2);
+  outline-offset: 2px;
 }
 
 .skip-link {
@@ -97,7 +110,8 @@ summary:focus-visible {
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(10px);
 
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .nav-left {
@@ -169,7 +183,7 @@ summary:focus-visible {
 
 .hero p {
   font-size: 18px;
-  color: var(--muted);
+  color: var(--subtext);
   margin-top: 18px;
   line-height: 1.6;
   max-width: 520px;
@@ -183,36 +197,39 @@ summary:focus-visible {
   align-items: center;
 }
 
-/* CTA */
+/* CTA (matches APP_STYLES.primaryButton / secondaryButton) */
 .cta {
   display: inline-block;
-  padding: 16px 30px;
-  border-radius: 999px;
-  background: white;
-  color: black;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #fff;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: var(--shadow);
 }
 
 .cta:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transform: translateY(-1px);
+  background: var(--accent-dark);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.35);
 }
 
 .cta-secondary {
   display: inline-block;
-  padding: 16px 26px;
-  border-radius: 999px;
-  border: 2px solid rgba(255,255,255,0.85);
-  color: #fff;
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
 }
 
 .cta-secondary:hover {
-  background: rgba(255,255,255,0.12);
+  background: var(--accent-soft);
 }
 
 /* ===== SECTIONS ===== */
@@ -228,7 +245,7 @@ summary:focus-visible {
 }
 
 .section-head p {
-  color: var(--muted);
+  color: var(--subtext);
   line-height: 1.65;
   margin-top: 12px;
 }
@@ -240,19 +257,25 @@ summary:focus-visible {
 }
 
 .card {
-  background: rgba(255,255,255,0.08);
+  background: var(--surface);
   padding: 28px;
   border-radius: 20px;
-  backdrop-filter: blur(20px);
-  transition: 0.3s;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  color: var(--ink);
 }
 
 .card p {
-  color: var(--muted);
+  color: var(--subtext);
 }
 
 /* ICONS */
@@ -260,10 +283,10 @@ summary:focus-visible {
   width: 32px;
   height: 32px;
   margin-bottom: 12px;
-  color: white;
+  color: var(--accent2);
 }
 
-/* ===== APP PREVIEW ===== */
+/* ===== APP PREVIEW (mirrors stack-app ScreenShell + dashboard) ===== */
 .preview-wrap {
   display: flex;
   justify-content: center;
@@ -276,36 +299,158 @@ summary:focus-visible {
   width: min(320px, 88vw);
   aspect-ratio: 9 / 19;
   border-radius: 36px;
-  padding: 14px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08));
-  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,255,255,0.25);
+  padding: 12px;
+  background: var(--surface);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border);
 }
 
 .phone-screen {
   width: 100%;
   height: 100%;
-  border-radius: 26px;
-  background: rgba(0,0,0,0.35);
+  border-radius: 28px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px;
+  background: linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 50%, var(--bg-c) 100%);
+}
+
+.phone-screen--app {
+  text-align: left;
+}
+
+.app-shell {
+  padding: 14px 14px 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  overflow: auto;
+}
+
+.app-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 10px;
 }
 
-.phone-screen strong {
-  font-family: 'New Spirit', sans-serif;
+.app-title {
   font-size: 22px;
+  font-weight: 800;
   letter-spacing: -0.02em;
 }
 
-.phone-screen span {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.5;
+.app-sub {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--subtext);
+  margin-top: 4px;
+  max-width: 220px;
+}
+
+.app-bell {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent2);
+  flex-shrink: 0;
+}
+
+.app-hero {
+  background: var(--hero-card);
+  border: 1px solid var(--hero-border);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.app-hero-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--subtext);
+}
+
+.app-hero-value {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.app-hero-line {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--accent2);
+  margin-top: 8px;
+}
+
+.app-hero-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.app-btn {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 10px 8px;
+  border-radius: 12px;
+}
+
+.app-btn--secondary {
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+.app-btn--primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.app-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.app-mini {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+}
+
+.app-mini-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--subtext);
+}
+
+.app-mini-value {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.app-mini-sub {
+  font-size: 9px;
+  color: var(--subtext);
+  margin-top: 6px;
+  line-height: 1.35;
 }
 
 .preview-copy {
@@ -313,8 +458,19 @@ summary:focus-visible {
 }
 
 .preview-copy p {
-  color: var(--muted);
+  color: var(--subtext);
   line-height: 1.65;
+}
+
+.link-accent {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.45);
+}
+
+.link-accent:hover {
+  color: var(--accent-dark);
 }
 
 /* ===== STEPS ===== */
@@ -326,11 +482,17 @@ summary:focus-visible {
 }
 
 .step-card {
-  background: rgba(255,255,255,0.08);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 26px 24px;
   position: relative;
   padding-top: 48px;
+  box-shadow: var(--shadow);
+}
+
+.step-card h3 {
+  color: var(--ink);
 }
 
 .step-card::before {
@@ -342,7 +504,8 @@ summary:focus-visible {
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.2);
+  background: var(--accent-soft);
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,7 +514,7 @@ summary:focus-visible {
 }
 
 .step-card p {
-  color: var(--muted);
+  color: var(--subtext);
   margin: 0;
   line-height: 1.55;
 }
@@ -362,11 +525,12 @@ summary:focus-visible {
 }
 
 .faq details {
-  background: rgba(255,255,255,0.08);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
   margin-bottom: 12px;
   padding: 16px 20px;
-  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
 }
 
 .faq summary {
@@ -374,6 +538,7 @@ summary:focus-visible {
   font-weight: 700;
   font-size: 16px;
   list-style: none;
+  color: var(--ink);
 }
 
 .faq summary::-webkit-details-marker {
@@ -385,7 +550,7 @@ summary:focus-visible {
 }
 
 .faq details p {
-  color: var(--muted);
+  color: var(--subtext);
   margin: 0;
   line-height: 1.6;
 }
@@ -393,11 +558,34 @@ summary:focus-visible {
 /* ===== VALUE ===== */
 .value p {
   max-width: 700px;
+  color: var(--subtext);
+}
+
+.value h2 {
+  color: var(--ink);
 }
 
 /* ===== WAITLIST ===== */
 .waitlist {
   text-align: center;
+}
+
+.waitlist-card {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px 28px 40px;
+  box-shadow: var(--shadow);
+}
+
+.waitlist-card h2 {
+  color: var(--ink);
+}
+
+.waitlist-card > p:first-of-type {
+  color: var(--subtext);
 }
 
 .waitlist-form {
@@ -414,28 +602,40 @@ summary:focus-visible {
   min-width: min(320px, 100%);
   max-width: 100%;
   flex: 1 1 260px;
-  border-radius: 10px;
-  border: none;
+  border-radius: 14px;
+  border: 1px solid var(--border);
   font-family: inherit;
   font-size: 16px;
+  color: var(--ink);
+  background: var(--surface);
 }
 
 .button {
   padding: 14px 24px;
-  border-radius: 999px;
+  border-radius: 14px;
   border: none;
-  background: white;
-  color: black;
+  background: var(--accent);
+  color: #fff;
   font-weight: 700;
   cursor: pointer;
   font-family: inherit;
   font-size: 16px;
+  box-shadow: var(--shadow);
+}
+
+.button:hover:not(:disabled) {
+  background: var(--accent-dark);
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .waitlist-note {
   margin-top: 14px;
   font-size: 14px;
-  color: rgba(255,255,255,0.72);
+  color: var(--muted);
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
@@ -446,15 +646,18 @@ summary:focus-visible {
   margin-top: 14px;
   font-weight: 600;
   min-height: 1.5em;
+  color: var(--ink);
 }
 
 /* ===== FOOTER ===== */
 .footer {
   text-align: center;
   padding: 48px 40px 64px;
-  color: rgba(255,255,255,0.65);
+  color: var(--subtext);
   font-size: 14px;
   line-height: 1.7;
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .footer-links {
@@ -466,14 +669,14 @@ summary:focus-visible {
 }
 
 .footer-links a {
-  color: #fff;
+  color: var(--accent);
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.35);
+  border-bottom: 1px solid rgba(76, 175, 80, 0.35);
 }
 
 .footer-links a:hover {
-  opacity: 0.85;
+  color: var(--accent-dark);
 }
 
 /* ===== ANIMATION ===== */
@@ -547,21 +750,51 @@ summary:focus-visible {
   </div>
 </section>
 
-<!-- PREVIEW -->
+<!-- PREVIEW (UI aligned with stack-app / Dashboard) -->
 <section id="preview" class="section">
   <div class="section-head reveal">
-    <h2>See the vibe</h2>
-    <p>Real screens are on the way. For now, imagine your circle’s goals, streaks, and nudges in one calm place.</p>
+    <h2>Same UI as the Stack app</h2>
+    <p>This mock matches the mint gradient, cards, and Home dashboard hero from <code style="font-size:0.92em;background:rgba(76,175,80,0.12);padding:2px 6px;border-radius:6px;">stack-app</code> — white surfaces, green accents, soft borders.</p>
   </div>
   <div class="preview-wrap reveal">
     <div class="phone" aria-hidden="true">
-      <div class="phone-screen">
-        <strong>Your circle</strong>
-        <span>Shared goal · Live progress · Gentle accountability</span>
+      <div class="phone-screen phone-screen--app">
+        <div class="app-shell">
+          <div class="app-top">
+            <div>
+              <div class="app-title">Home</div>
+              <div class="app-sub">Keep your savings and investing goals moving with your people.</div>
+            </div>
+            <div class="app-bell" title="Notifications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+          </div>
+          <div class="app-hero">
+            <div class="app-hero-label">Total saved</div>
+            <div class="app-hero-value">$1,240</div>
+            <div class="app-hero-line">Every contribution is building a habit your friends can see and celebrate.</div>
+            <div class="app-hero-actions">
+              <span class="app-btn app-btn--secondary">Leaderboard</span>
+              <span class="app-btn app-btn--primary">Open Stacks</span>
+            </div>
+          </div>
+          <div class="app-row2">
+            <div class="app-mini">
+              <div class="app-mini-label">Savings goals</div>
+              <div class="app-mini-value">3</div>
+              <div class="app-mini-sub">$820 currently stacked</div>
+            </div>
+            <div class="app-mini">
+              <div class="app-mini-label">Investing goals</div>
+              <div class="app-mini-value">1</div>
+              <div class="app-mini-sub">$420 now, $612 projected in 12m</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="preview-copy">
-      <p>We’re polishing the first experience: small groups, clear goals, and visibility that helps — without turning finance into a performance.</p>
+      <p>Colors and components mirror <strong>theme.js</strong> and the signed-in Home screen: hero card, stat tiles, and primary / secondary buttons.</p>
     </div>
   </div>
 </section>
@@ -706,23 +939,25 @@ summary:focus-visible {
     </details>
     <details>
       <summary>Who’s building Stack?</summary>
-      <p>A small team obsessed with behavior design and honest finance UX. Say hi on <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;">LinkedIn</a>.</p>
+      <p>A small team obsessed with behavior design and honest finance UX. Say hi on <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" class="link-accent">LinkedIn</a>.</p>
     </details>
   </div>
 </section>
 
 <!-- WAITLIST -->
 <section id="waitlist" class="section waitlist reveal">
-  <h2>Join the waitlist</h2>
-  <p>Be one of the first users.</p>
+  <div class="waitlist-card">
+    <h2>Join the waitlist</h2>
+    <p>Be one of the first users.</p>
 
-  <form id="waitlist-form" class="waitlist-form" novalidate>
-    <label class="visually-hidden" for="email">Email</label>
-    <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
-    <button class="button" type="submit" id="waitlist-submit">Join</button>
-  </form>
-  <p id="waitlist-message" role="status" aria-live="polite"></p>
-  <p class="waitlist-note">We’ll only use your email for Stack launch updates. Unsubscribe anytime.</p>
+    <form id="waitlist-form" class="waitlist-form" novalidate>
+      <label class="visually-hidden" for="email">Email</label>
+      <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
+      <button class="button" type="submit" id="waitlist-submit">Join</button>
+    </form>
+    <p id="waitlist-message" role="status" aria-live="polite"></p>
+    <p class="waitlist-note">We’ll only use your email for Stack launch updates. Unsubscribe anytime.</p>
+  </div>
 </section>
 
 </main>
@@ -797,7 +1032,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
   btn.textContent = 'Sending…';
 
   if (!isWaitlistConfigured()) {
-    msg.innerHTML = 'Thanks! Waitlist email isn’t connected on this build yet — <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:700;">follow Stack on LinkedIn</a> for updates.';
+    msg.innerHTML = 'Thanks! Waitlist email isn’t connected on this build yet — <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" class="link-accent">follow Stack on LinkedIn</a> for updates.';
     emailInput.value = '';
     btn.disabled = false;
     btn.textContent = prev;
