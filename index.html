@@ -432,6 +432,28 @@ summary:focus-visible {
   overflow: auto;
 }
 
+.app-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #283329;
+}
+
+.app-status-dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.app-status-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #283329;
+  opacity: 0.7;
+}
+
 .app-top {
   display: flex;
   justify-content: space-between;
@@ -473,6 +495,33 @@ summary:focus-visible {
   padding: 14px;
 }
 
+.app-brand {
+  position: relative;
+  width: 148px;
+  height: 42px;
+}
+
+.app-brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 7px rgba(216, 46, 138, 0.45));
+}
+
+.app-brand-logo--ghost {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+}
+
+.app-hero-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 .app-hero-label {
   font-size: 10px;
   font-weight: 700;
@@ -484,7 +533,7 @@ summary:focus-visible {
 .app-hero-value {
   font-size: 28px;
   font-weight: 800;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .app-hero-line {
@@ -941,6 +990,14 @@ summary:focus-visible {
     <div class="phone" role="img" aria-label="Stack app Home screen preview">
       <div class="phone-screen phone-screen--app">
         <div class="app-shell">
+          <div class="app-status">
+            <span>9:41</span>
+            <span class="app-status-dots" aria-hidden="true">
+              <span class="app-status-dot"></span>
+              <span class="app-status-dot"></span>
+              <span class="app-status-dot"></span>
+            </span>
+          </div>
           <div class="app-top">
             <div>
               <div class="app-title">Home</div>
@@ -951,6 +1008,12 @@ summary:focus-visible {
             </div>
           </div>
           <div class="app-hero">
+            <div class="app-hero-head">
+              <div class="app-brand" aria-hidden="true">
+                <img src="/Users/abhinavrandive/stack-app/logo1.svg" alt="" class="app-brand-logo" />
+                <img src="/Users/abhinavrandive/stack-app/logo1.svg" alt="" class="app-brand-logo app-brand-logo--ghost" />
+              </div>
+            </div>
             <div class="app-hero-label">Total saved</div>
             <div class="app-hero-value">$1,240</div>
             <div class="app-hero-line">Every contribution is building a habit your friends can see and celebrate.</div>
