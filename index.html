@@ -499,14 +499,17 @@ summary:focus-visible {
   position: relative;
   width: 148px;
   height: 42px;
-  margin-left: -20px;
+  overflow: hidden;
 }
 
 .app-brand-logo {
-  width: 100%;
+  width: 210px;
   height: 100%;
+  max-width: none;
   object-fit: contain;
+  object-position: left center;
   display: block;
+  transform: translateX(-32px);
   filter: drop-shadow(0 0 7px rgba(216, 46, 138, 0.45));
 }
 
