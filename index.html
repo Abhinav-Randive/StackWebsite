@@ -283,6 +283,26 @@ summary:focus-visible {
   align-items: stretch;
 }
 
+.hero-meta {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--subtext);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 /* CTA (matches APP_STYLES.primaryButton / secondaryButton) */
 .cta {
   display: inline-flex;
@@ -509,7 +529,7 @@ summary:focus-visible {
   object-fit: contain;
   object-position: left center;
   display: block;
-  transform: translateX(-5px);
+  transform: translateX(-6px);
   filter: drop-shadow(0 0 7px rgba(216, 46, 138, 0.45));
 }
 
@@ -606,6 +626,161 @@ summary:focus-visible {
   color: var(--subtext);
   margin-top: 6px;
   line-height: 1.35;
+}
+
+/* ===== FULLER UI BLOCKS ===== */
+.stats-strip {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 12px;
+  box-shadow: var(--shadow);
+}
+
+.stat-chip-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.stat-chip-label {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--subtext);
+}
+
+.ui-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ui-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.ui-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ui-card h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.ui-card p {
+  margin: 10px 0 0;
+  color: var(--subtext);
+  line-height: 1.55;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--hero-border);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+.mock-list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.mock-list li {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 9px 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--subtext);
+  background: #fff;
+}
+
+.timeline {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.timeline-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.timeline-kicker {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+.timeline-item h3 {
+  margin: 8px 0 0;
+  font-size: 18px;
+}
+
+.timeline-item p {
+  margin: 8px 0 0;
+  color: var(--subtext);
+  line-height: 1.55;
+}
+
+.quote-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.quote {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.quote p {
+  margin: 0;
+  color: var(--subtext);
+  line-height: 1.55;
+}
+
+.quote-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
 }
 
 .link-accent {
@@ -916,6 +1091,26 @@ summary:focus-visible {
   }
 }
 
+@media (max-width: 900px) {
+  .stats-strip,
+  .ui-grid,
+  .timeline {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .stats-strip,
+  .ui-grid,
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -984,6 +1179,33 @@ summary:focus-visible {
       <a href="#waitlist" class="cta">Join the Waitlist</a>
       <a href="https://www.linkedin.com/company/s1ack/" class="cta-secondary" target="_blank" rel="noopener noreferrer">Follow updates</a>
     </div>
+    <div class="hero-meta">
+      <span class="hero-pill"><i data-lucide="shield-check"></i> Private by default</span>
+      <span class="hero-pill"><i data-lucide="users-round"></i> Small trusted circles</span>
+      <span class="hero-pill"><i data-lucide="sparkles"></i> Built for consistency</span>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<section class="section">
+  <div class="stats-strip reveal">
+    <div class="stat-chip">
+      <div class="stat-chip-value">3 steps</div>
+      <div class="stat-chip-label">From circle to progress</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-chip-value">24h</div>
+      <div class="stat-chip-label">Typical check-in rhythm</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-chip-value">100%</div>
+      <div class="stat-chip-label">Invite-only circles</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-chip-value">v1</div>
+      <div class="stat-chip-label">Focused on social saving</div>
+    </div>
   </div>
 </section>
 
@@ -1044,6 +1266,52 @@ summary:focus-visible {
   </div>
 </section>
 
+<!-- PRODUCT UI SURFACES -->
+<section class="section">
+  <div class="section-head reveal">
+    <h2>More product surface</h2>
+    <p>A fuller look at the workflows you’ll use every week inside Stack.</p>
+  </div>
+  <div class="ui-grid reveal">
+    <article class="ui-card">
+      <div class="ui-card-head">
+        <h3>Circle feed</h3>
+        <span class="badge">Live</span>
+      </div>
+      <p>Lightweight updates that show progress without turning money into a public scoreboard.</p>
+      <ul class="mock-list">
+        <li><span>Sarah added $30</span><strong>2m</strong></li>
+        <li><span>Trip Fund reached 68%</span><strong>Today</strong></li>
+        <li><span>Weekly check-in posted</span><strong>Now</strong></li>
+      </ul>
+    </article>
+    <article class="ui-card">
+      <div class="ui-card-head">
+        <h3>Contribution flow</h3>
+        <span class="badge">Fast</span>
+      </div>
+      <p>Convert “skip purchase” moments into progress with one clean action.</p>
+      <ul class="mock-list">
+        <li><span>Skipped: delivery coffee</span><strong>$9</strong></li>
+        <li><span>Redirect to: Emergency Buffer</span><strong>Done</strong></li>
+        <li><span>Streak updated</span><strong>+1</strong></li>
+      </ul>
+    </article>
+    <article class="ui-card">
+      <div class="ui-card-head">
+        <h3>Gentle nudges</h3>
+        <span class="badge">Tone-safe</span>
+      </div>
+      <p>Accountability prompts designed to keep people motivated, not shamed.</p>
+      <ul class="mock-list">
+        <li><span>“You’re close to this week’s target.”</span><strong>Push</strong></li>
+        <li><span>“2 friends checked in today.”</span><strong>Feed</strong></li>
+        <li><span>“Set your next mini-goal.”</span><strong>Card</strong></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
 <!-- FEATURES -->
 <section id="features" class="section">
   <div class="grid">
@@ -1066,6 +1334,41 @@ summary:focus-visible {
       <p>Turn skipped purchases into shared progress instantly.</p>
     </div>
 
+  </div>
+</section>
+
+<!-- ROLLOUT -->
+<section class="section">
+  <div class="section-head reveal">
+    <h2>What ships next</h2>
+    <p>We’re shipping in focused layers so the core behavior works before everything else.</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-kicker">Now</div>
+      <h3>Circle foundations</h3>
+      <p>Create circles, set targets, and post progress with clear visibility controls.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-kicker">Next</div>
+      <h3>Smarter habits</h3>
+      <p>Nudges, streak logic, and simple weekly rituals that keep circles active.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-kicker">Later</div>
+      <h3>Financial depth</h3>
+      <p>Expanded settings and deeper integrations once social saving behavior is strong.</p>
+    </div>
+  </div>
+  <div class="quote-grid reveal">
+    <blockquote class="quote">
+      <p>“I save more when my friends can see the goal — not the pressure, just the momentum.”</p>
+      <div class="quote-meta">Early Waitlist Interview</div>
+    </blockquote>
+    <blockquote class="quote">
+      <p>“Stack feels like accountability with taste. It keeps me honest without feeling heavy.”</p>
+      <div class="quote-meta">Design Feedback Session</div>
+    </blockquote>
   </div>
 </section>
 
