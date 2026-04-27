@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Stack — Money works better together</title>
 <meta name="description" content="Stack is a social finance app: save with friends in private circles, share progress, and stay accountable." />
-<meta name="theme-color" content="#4CAF50" />
+<meta name="theme-color" content="#6BBF59" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Stack — Money works better together" />
 <meta property="og:description" content="Saving works better when it's social. Circles, shared visibility, and goals you actually stick to." />
@@ -36,22 +36,23 @@
 
 /* ===== COLORS (from stack-app/theme.js) ===== */
 :root {
-  --bg-a: #f4fbf5;
-  --bg-b: #eff8f1;
+  --bg-a: #f8fbf9;
+  --bg-b: #f3f9f5;
   --bg-c: #ffffff;
   --surface: #ffffff;
-  --ink: #000000;
-  --subtext: #4a4a4a;
-  --muted: #9e9e9e;
-  --border: #e0e0e0;
-  --accent: #4caf50;
-  --accent-dark: #388e3c;
-  --accent2: #66bb6a;
-  --accent-soft: rgba(76, 175, 80, 0.1);
-  --hero-card: rgba(102, 187, 106, 0.16);
-  --hero-border: rgba(102, 187, 106, 0.45);
-  --danger: #ff7d92;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --ink: #1f453b;
+  --subtext: #335e53;
+  --muted: #7c9b93;
+  --border: #e2ece5;
+  --accent: #6bbf59;
+  --accent-dark: #4f9747;
+  --accent2: #4daa57;
+  --accent-soft: rgba(107, 191, 89, 0.16);
+  --hero-card: #e9f3ea;
+  --hero-border: rgba(107, 191, 89, 0.28);
+  --danger: #ff4d4d;
+  --shadow: 0 2px 8px rgba(31, 69, 59, 0.05);
+  --card-shadow: 0 5px 16px rgba(31, 69, 59, 0.07);
 }
 
 /* ===== BASE ===== */
@@ -65,7 +66,7 @@ html {
 body {
   margin: 0;
   font-family: 'Pangram', system-ui, sans-serif;
-  background: linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 45%, var(--bg-c) 100%);
+  background: linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 42%, var(--bg-c) 100%);
   color: var(--ink);
   min-height: 100vh;
   overflow-x: hidden;
@@ -80,7 +81,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--accent2);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -90,8 +91,8 @@ summary:focus-visible {
   top: 12px;
   z-index: 2000;
   padding: 12px 20px;
-  background: #fff;
-  color: #000;
+  background: var(--surface);
+  color: var(--ink);
   font-weight: 700;
   border-radius: 8px;
   text-decoration: none;
@@ -191,7 +192,7 @@ summary:focus-visible {
 
 .nav-right a {
   text-decoration: none;
-  color: black;
+  color: var(--ink);
   font-weight: 600;
   font-size: 14px;
   transition: opacity 0.2s;
@@ -310,7 +311,8 @@ summary:focus-visible {
   justify-content: center;
   min-height: 48px;
   padding: 14px 22px;
-  border-radius: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(79, 151, 71, 0.4);
   background: var(--accent);
   color: #fff;
   font-weight: 700;
@@ -323,7 +325,7 @@ summary:focus-visible {
 .cta:hover {
   transform: translateY(-1px);
   background: var(--accent-dark);
-  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.35);
+  box-shadow: 0 6px 20px rgba(107, 191, 89, 0.35);
 }
 
 .cta-secondary {
@@ -332,18 +334,18 @@ summary:focus-visible {
   justify-content: center;
   min-height: 48px;
   padding: 14px 22px;
-  border-radius: 14px;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  color: var(--accent2);
   font-weight: 700;
   text-decoration: none;
-  background: transparent;
+  background: var(--surface);
   transition: background 0.2s, color 0.2s;
   touch-action: manipulation;
 }
 
 .cta-secondary:hover {
-  background: var(--accent-soft);
+  background: rgba(107, 191, 89, 0.08);
 }
 
 /* ===== SECTIONS ===== */
@@ -381,15 +383,15 @@ summary:focus-visible {
 .card {
   background: var(--surface);
   padding: 28px;
-  border-radius: 20px;
+  border-radius: 24px;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
   transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 28px rgba(31, 69, 59, 0.1);
 }
 
 .card h3 {
@@ -408,7 +410,7 @@ summary:focus-visible {
   color: var(--accent2);
 }
 
-/* ===== APP PREVIEW (mirrors stack-app ScreenShell + dashboard) ===== */
+/* ===== APP PREVIEW (mirrors stack-app ScreenShell + dashboardScreen) ===== */
 .preview-wrap {
   display: flex;
   justify-content: center;
@@ -419,15 +421,16 @@ summary:focus-visible {
 
 .phone {
   width: min(320px, 88vw);
-  aspect-ratio: 9 / 19;
+  aspect-ratio: 9 / 20.5;
   border-radius: 36px;
   padding: 12px;
   background: var(--surface);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 60px rgba(31, 69, 59, 0.12);
   border: 1px solid var(--border);
 }
 
 .phone-screen {
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 28px;
@@ -441,13 +444,26 @@ summary:focus-visible {
   text-align: left;
 }
 
+.app-blob {
+  position: absolute;
+  top: -70px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(107, 191, 89, 0.1);
+  pointer-events: none;
+}
+
 .app-shell {
-  padding: 14px 14px 18px;
+  position: relative;
+  z-index: 1;
+  padding: 14px 20px 16px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   height: 100%;
   overflow: auto;
 }
@@ -458,7 +474,7 @@ summary:focus-visible {
   align-items: center;
   font-size: 10px;
   font-weight: 700;
-  color: #283329;
+  color: var(--ink);
 }
 
 .app-status-dots {
@@ -470,7 +486,7 @@ summary:focus-visible {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #283329;
+  background: var(--ink);
   opacity: 0.7;
 }
 
@@ -479,25 +495,34 @@ summary:focus-visible {
   justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
+  margin-bottom: 2px;
 }
 
 .app-title {
   font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+  line-height: 1.1;
+  color: var(--ink);
 }
 
 .app-sub {
   font-size: 11px;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--subtext);
-  margin-top: 4px;
+  margin-top: 6px;
   max-width: 220px;
 }
 
+.app-bell-wrap {
+  position: relative;
+  flex-shrink: 0;
+  padding: 2px;
+}
+
 .app-bell {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -505,127 +530,235 @@ summary:focus-visible {
   align-items: center;
   justify-content: center;
   color: var(--accent2);
-  flex-shrink: 0;
+}
+
+.app-bell-badge {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #1c1020;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
 }
 
 .app-hero {
   background: var(--hero-card);
   border: 1px solid var(--hero-border);
-  border-radius: 18px;
-  padding: 14px;
+  border-radius: 26px;
+  padding: 16px 14px 14px;
+  box-shadow: var(--card-shadow);
+  margin-top: 4px;
 }
 
-.app-brand {
-  position: relative;
-  width: 148px;
-  height: 42px;
-  overflow: hidden;
+.app-brand-wrap {
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
 }
 
 .app-brand-logo {
-  width: 210px;
-  height: 100%;
-  max-width: none;
+  width: 200px;
+  max-width: calc(100% + 36px);
+  height: 40px;
   object-fit: contain;
   object-position: left center;
   display: block;
-  transform: translateX(-6px);
-  filter: drop-shadow(0 0 7px rgba(216, 46, 138, 0.45));
-}
-
-.app-brand-logo--ghost {
-  position: absolute;
-  inset: 0;
-  opacity: 0.35;
-}
-
-.app-hero-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
+  margin-left: -12px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
 }
 
 .app-hero-label {
   font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 800;
+  letter-spacing: 1.1px;
   text-transform: uppercase;
   color: var(--subtext);
+  margin-top: 2px;
 }
 
 .app-hero-value {
-  font-size: 28px;
-  font-weight: 800;
-  margin-top: 10px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--ink);
+  margin-top: 6px;
+  letter-spacing: -0.5px;
 }
 
-.app-hero-line {
-  font-size: 11px;
-  line-height: 1.45;
+.app-hero-sub {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.5;
   color: var(--accent2);
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .app-hero-actions {
   display: flex;
   gap: 8px;
   margin-top: 12px;
+  align-items: stretch;
 }
 
 .app-btn {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 10px 8px;
-  border-radius: 12px;
+  padding: 8px 6px;
+  border-radius: 18px;
+  line-height: 1.2;
 }
 
 .app-btn--secondary {
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-  background: transparent;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent2);
 }
 
 .app-btn--primary {
   background: var(--accent);
+  border: 1px solid rgba(79, 151, 71, 0.4);
   color: #fff;
 }
 
-.app-row2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.app-mini {
+/* Dashboard “Stacks you’re in” card + progress (dashboardScreen) */
+.app-stacks-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 10px;
-  box-shadow: var(--shadow);
+  border-radius: 24px;
+  padding: 14px;
+  box-shadow: var(--card-shadow);
 }
 
-.app-mini-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+.app-stacks-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-stacks-ico {
+  width: 16px;
+  height: 16px;
+  color: var(--accent2);
+  flex-shrink: 0;
+}
+
+.app-stacks-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
   text-transform: uppercase;
   color: var(--subtext);
 }
 
-.app-mini-value {
-  font-size: 18px;
-  font-weight: 800;
+.app-stacks-value {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--ink);
   margin-top: 4px;
+  letter-spacing: -0.3px;
 }
 
-.app-mini-sub {
-  font-size: 9px;
+.app-stacks-desc {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.45;
   color: var(--subtext);
   margin-top: 6px;
-  line-height: 1.35;
+}
+
+.app-progress-track {
+  height: 8px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.app-progress-fill {
+  height: 100%;
+  width: 62%;
+  background: var(--accent2);
+  border-radius: 8px;
+}
+
+.app-stacks-foot {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.4;
+  color: var(--subtext);
+  margin-top: 5px;
+}
+
+/* Next steps card (onboarding panel) */
+.app-next-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 14px;
+  box-shadow: var(--card-shadow);
+}
+
+.app-next-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--subtext);
+}
+
+.app-next-copy {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--ink);
+  margin-top: 8px;
+}
+
+.app-next-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.app-next-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 18px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.app-next-btn--primary {
+  background: var(--accent);
+  border: 1px solid rgba(79, 151, 71, 0.4);
+  color: #fff;
+}
+
+.app-next-btn--done {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent2);
 }
 
 /* ===== FULLER UI BLOCKS ===== */
@@ -641,7 +774,7 @@ summary:focus-visible {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 14px 12px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
 }
 
 .stat-chip-value {
@@ -666,7 +799,7 @@ summary:focus-visible {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 18px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
   padding: 18px;
 }
 
@@ -695,7 +828,7 @@ summary:focus-visible {
   border-radius: 999px;
   border: 1px solid var(--hero-border);
   background: var(--accent-soft);
-  color: var(--accent-dark);
+  color: var(--ink);
   font-size: 11px;
   font-weight: 700;
   padding: 5px 9px;
@@ -718,7 +851,7 @@ summary:focus-visible {
   align-items: center;
   font-size: 13px;
   color: var(--subtext);
-  background: #fff;
+  background: var(--surface);
 }
 
 .timeline {
@@ -733,7 +866,7 @@ summary:focus-visible {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
 }
 
 .timeline-kicker {
@@ -759,7 +892,7 @@ summary:focus-visible {
   color: var(--accent);
   font-weight: 700;
   text-decoration: none;
-  border-bottom: 1px solid rgba(76, 175, 80, 0.45);
+  border-bottom: 1px solid rgba(107, 191, 89, 0.45);
 }
 
 .link-accent:hover {
@@ -781,7 +914,7 @@ summary:focus-visible {
   padding: 26px 24px;
   position: relative;
   padding-top: 48px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
 }
 
 .step-card h3 {
@@ -823,7 +956,7 @@ summary:focus-visible {
   border-radius: 16px;
   margin-bottom: 12px;
   padding: 16px 20px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
 }
 
 .faq summary {
@@ -878,7 +1011,7 @@ summary:focus-visible {
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 36px calc(28px + env(safe-area-inset-right, 0px)) 40px calc(28px + env(safe-area-inset-left, 0px));
-  box-shadow: var(--shadow);
+  box-shadow: var(--card-shadow);
 }
 
 .waitlist-card h2 {
@@ -905,7 +1038,7 @@ summary:focus-visible {
   max-width: 100%;
   flex: 1 1 200px;
   min-height: 48px;
-  border-radius: 14px;
+  border-radius: 16px;
   border: 1px solid var(--border);
   font-family: inherit;
   font-size: 16px;
@@ -916,8 +1049,8 @@ summary:focus-visible {
 .button {
   padding: 14px 24px;
   min-height: 48px;
-  border-radius: 14px;
-  border: none;
+  border-radius: 18px;
+  border: 1px solid rgba(79, 151, 71, 0.4);
   background: var(--accent);
   color: #fff;
   font-weight: 700;
@@ -981,7 +1114,7 @@ summary:focus-visible {
   color: var(--accent);
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px solid rgba(76, 175, 80, 0.35);
+  border-bottom: 1px solid rgba(107, 191, 89, 0.35);
 }
 
 .footer-links a:hover {
@@ -1056,10 +1189,6 @@ summary:focus-visible {
 
   .app-btn {
     width: 100%;
-  }
-
-  .app-row2 {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -1352,6 +1481,7 @@ summary:focus-visible {
   <div class="preview-wrap reveal">
     <div class="phone" role="img" aria-label="Stack app Home screen preview">
       <div class="phone-screen phone-screen--app">
+        <div class="app-blob" aria-hidden="true"></div>
         <div class="app-shell">
           <div class="app-status">
             <span>9:41</span>
@@ -1364,37 +1494,48 @@ summary:focus-visible {
           <div class="app-top">
             <div>
               <div class="app-title">Home</div>
-              <div class="app-sub">Keep your savings and investing goals moving with your people.</div>
+              <div class="app-sub">A single place to see your shared savings and what’s next.</div>
             </div>
-            <div class="app-bell" title="Notifications">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div class="app-bell-wrap" title="Notifications">
+              <div class="app-bell">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </div>
+              <span class="app-bell-badge">2</span>
             </div>
           </div>
           <div class="app-hero">
-            <div class="app-hero-head">
-              <div class="app-brand" aria-hidden="true">
-                <img src="logo1.svg" alt="" class="app-brand-logo" />
-                <img src="logo1.svg" alt="" class="app-brand-logo app-brand-logo--ghost" />
-              </div>
+            <div class="app-brand-wrap" aria-hidden="true">
+              <img src="logo1.svg" alt="" class="app-brand-logo" />
             </div>
             <div class="app-hero-label">Total saved</div>
             <div class="app-hero-value">$1,240</div>
-            <div class="app-hero-line">Every contribution is building a habit your friends can see and celebrate.</div>
+            <p class="app-hero-sub">Pay-ins are visible to members so everyone can see progress toward the goal.</p>
             <div class="app-hero-actions">
               <span class="app-btn app-btn--secondary">Leaderboard</span>
-              <span class="app-btn app-btn--primary">Open Stacks</span>
+              <span class="app-btn app-btn--primary">Browse stacks</span>
             </div>
           </div>
-          <div class="app-row2">
-            <div class="app-mini">
-              <div class="app-mini-label">Savings goals</div>
-              <div class="app-mini-value">3</div>
-              <div class="app-mini-sub">$820 currently stacked</div>
+          <div class="app-stacks-card">
+            <div class="app-stacks-head">
+              <svg class="app-stacks-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+              </svg>
+              <span class="app-stacks-label">Stacks you’re in</span>
             </div>
-            <div class="app-mini">
-              <div class="app-mini-label">Investing goals</div>
-              <div class="app-mini-value">1</div>
-              <div class="app-mini-sub">$420 now, $612 projected in 12m</div>
+            <div class="app-stacks-value">3</div>
+            <p class="app-stacks-desc">$4,200 saved together so far</p>
+            <div class="app-progress-track" aria-hidden="true">
+              <div class="app-progress-fill"></div>
+            </div>
+            <p class="app-stacks-foot">$4,200 of $6,800 across your stack goals</p>
+          </div>
+          <div class="app-next-card">
+            <div class="app-next-label">Next steps</div>
+            <p class="app-next-copy">1 of 3 setup steps complete.</p>
+            <div class="app-next-actions">
+              <span class="app-next-btn app-next-btn--primary">Start your first stack</span>
+              <span class="app-next-btn app-next-btn--done">Done — Invite a friend to stack with</span>
             </div>
           </div>
         </div>
