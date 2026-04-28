@@ -799,10 +799,10 @@ summary:focus-visible {
 
 .screen-rotator {
   width: 100%;
-  height: 120px;
+  height: 188px;
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 18px;
   border: 1px solid var(--border);
   background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
 }
@@ -816,10 +816,10 @@ summary:focus-visible {
   position: absolute;
   inset: 0;
   background: var(--surface);
-  padding: 10px 12px;
+  padding: 10px;
   opacity: 0;
   transform: translateY(8px);
-  animation: screen-rotate 12s infinite;
+  animation: screen-rotate 20s infinite;
 }
 
 .screen-rotator-slide--leaderboard {
@@ -830,12 +830,20 @@ summary:focus-visible {
   animation-delay: 4s;
 }
 
-.screen-rotator-slide--profile {
+.screen-rotator-slide--friends {
   animation-delay: 8s;
 }
 
+.screen-rotator-slide--stacks {
+  animation-delay: 12s;
+}
+
+.screen-rotator-slide--analytics {
+  animation-delay: 16s;
+}
+
 .screen-rotator-kicker {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -843,22 +851,22 @@ summary:focus-visible {
 }
 
 .screen-rotator-row {
-  margin-top: 7px;
+  margin-top: 8px;
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .screen-rotator-title {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.15;
   color: var(--ink);
 }
 
 .screen-rotator-meta {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--subtext);
   line-height: 1.35;
 }
@@ -874,13 +882,41 @@ summary:focus-visible {
   white-space: nowrap;
 }
 
+.screen-mini-phone {
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f8fbf9 0%, #ffffff 100%);
+  padding: 8px;
+}
+
+.screen-mini-list {
+  margin: 7px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.screen-mini-list li {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  color: var(--subtext);
+  background: #fff;
+}
+
 @keyframes screen-rotate {
   0%,
-  30% {
+  16% {
     opacity: 1;
     transform: translateY(0);
   }
-  33%,
+  20%,
   100% {
     opacity: 0;
     transform: translateY(8px);
@@ -1143,17 +1179,36 @@ summary:focus-visible {
 }
 
 .waitlist-card {
-  max-width: 560px;
+  max-width: 640px;
   margin: 0 auto;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(107, 191, 89, 0.35);
   border-radius: 24px;
   padding: 36px calc(28px + env(safe-area-inset-right, 0px)) 40px calc(28px + env(safe-area-inset-left, 0px));
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 18px 44px rgba(31, 69, 59, 0.1);
+  position: relative;
+}
+
+.waitlist-card::before {
+  content: "Early access";
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  border: 1px solid var(--hero-border);
+  border-radius: 999px;
+  padding: 5px 9px;
 }
 
 .waitlist-card h2 {
   color: var(--ink);
+  margin-top: 18px;
+  font-size: clamp(36px, 5vw, 52px);
 }
 
 .waitlist-card > p:first-of-type {
@@ -1224,6 +1279,13 @@ summary:focus-visible {
   margin-bottom: 0;
   color: var(--subtext);
   font-size: 13px;
+}
+
+.waitlist-privacy {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--subtext);
+  line-height: 1.45;
 }
 
 .waitlist .nowrap {
@@ -1687,6 +1749,13 @@ summary:focus-visible {
                   <div class="screen-rotator-chip">+4 streak</div>
                 </div>
                 <div class="screen-rotator-meta">$310 moved to goals • 12 friends active</div>
+                <div class="screen-mini-phone">
+                  <ul class="screen-mini-list">
+                    <li><span>Alex</span><strong>$355</strong></li>
+                    <li><span>You</span><strong>$310</strong></li>
+                    <li><span>Priya</span><strong>$280</strong></li>
+                  </ul>
+                </div>
               </article>
 
               <article class="screen-rotator-slide screen-rotator-slide--feed" role="img" aria-label="Circle feed screen">
@@ -1696,15 +1765,61 @@ summary:focus-visible {
                   <div class="screen-rotator-chip">Live</div>
                 </div>
                 <div class="screen-rotator-meta">Sarah added $30 • 2 check-ins today</div>
+                <div class="screen-mini-phone">
+                  <ul class="screen-mini-list">
+                    <li><span>Sarah added</span><strong>$30</strong></li>
+                    <li><span>Weekly check-in</span><strong>Now</strong></li>
+                    <li><span>Trip Fund progress</span><strong>68%</strong></li>
+                  </ul>
+                </div>
               </article>
 
-              <article class="screen-rotator-slide screen-rotator-slide--profile" role="img" aria-label="Profile and progress screen">
-                <div class="screen-rotator-kicker">Profile</div>
+              <article class="screen-rotator-slide screen-rotator-slide--friends" role="img" aria-label="Friends screen">
+                <div class="screen-rotator-kicker">Friends</div>
                 <div class="screen-rotator-row">
-                  <div class="screen-rotator-title">$8,420 saved</div>
-                  <div class="screen-rotator-chip">3 goals</div>
+                  <div class="screen-rotator-title">Invite by email</div>
+                  <div class="screen-rotator-chip">Trusted</div>
                 </div>
-                <div class="screen-rotator-meta">Share wins, see streaks, keep momentum</div>
+                <div class="screen-rotator-meta">Search friends, redeem invite codes, build your circle</div>
+                <div class="screen-mini-phone">
+                  <ul class="screen-mini-list">
+                    <li><span>ananya@uni.edu</span><strong>Added</strong></li>
+                    <li><span>invite code</span><strong>STACK24</strong></li>
+                    <li><span>circle members</span><strong>6</strong></li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="screen-rotator-slide screen-rotator-slide--stacks" role="img" aria-label="Stack detail screen">
+                <div class="screen-rotator-kicker">Stacks</div>
+                <div class="screen-rotator-row">
+                  <div class="screen-rotator-title">Emergency Buffer</div>
+                  <div class="screen-rotator-chip">72%</div>
+                </div>
+                <div class="screen-rotator-meta">Contribute, track progress, and see circle activity in one place</div>
+                <div class="screen-mini-phone">
+                  <ul class="screen-mini-list">
+                    <li><span>Goal</span><strong>$8,000</strong></li>
+                    <li><span>Saved</span><strong>$5,760</strong></li>
+                    <li><span>Recent pay-in</span><strong>$45</strong></li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="screen-rotator-slide screen-rotator-slide--analytics" role="img" aria-label="Analytics screen">
+                <div class="screen-rotator-kicker">Analytics</div>
+                <div class="screen-rotator-row">
+                  <div class="screen-rotator-title">Monthly momentum</div>
+                  <div class="screen-rotator-chip">+18%</div>
+                </div>
+                <div class="screen-rotator-meta">See streaks and weekly trends without leaving your flow</div>
+                <div class="screen-mini-phone">
+                  <ul class="screen-mini-list">
+                    <li><span>This week</span><strong>$190</strong></li>
+                    <li><span>Best streak</span><strong>14 days</strong></li>
+                    <li><span>Active goals</span><strong>3</strong></li>
+                  </ul>
+                </div>
               </article>
             </div>
           </div>
@@ -1807,31 +1922,6 @@ summary:focus-visible {
   </div>
 </section>
 
-<!-- ROLLOUT -->
-<section class="section">
-  <div class="section-head reveal">
-    <h2>What ships next</h2>
-    <p>We’re shipping in focused layers so the core behavior works before everything else.</p>
-  </div>
-  <div class="timeline reveal">
-    <div class="timeline-item">
-      <div class="timeline-kicker">Now</div>
-      <h3>Circle foundations</h3>
-      <p>Create circles, set targets, and post progress with clear visibility controls.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-kicker">Next</div>
-      <h3>Smarter habits</h3>
-      <p>Nudges, streak logic, and simple weekly rituals that keep circles active.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-kicker">Later</div>
-      <h3>Financial depth</h3>
-      <p>Expanded settings and deeper integrations once social saving behavior is strong.</p>
-    </div>
-  </div>
-</section>
-
 <!-- HOW IT WORKS -->
 <section id="how" class="section">
   <div class="section-head reveal">
@@ -1898,6 +1988,7 @@ summary:focus-visible {
   <div class="section-head">
     <h2>Privacy &amp; trust</h2>
     <p>Social doesn’t mean public. Stack is designed for small, intentional groups — not an audience.</p>
+    <p>We only collect the minimum needed for waitlist and app access, and we never sell personal data.</p>
   </div>
   <div class="grid">
     <div class="card">
@@ -1926,8 +2017,8 @@ summary:focus-visible {
   </div>
   <div class="faq reveal">
     <details>
-      <summary>Do you hold or move my money?</summary>
-      <p>Not in this first landing chapter. Details on banking, balances, and partners will be spelled out clearly before launch.</p>
+      <summary>Do I need my full friend list?</summary>
+      <p>No. Stack works best with a small trusted circle where progress stays high-signal and lightweight.</p>
     </details>
     <details>
       <summary>What exactly do friends see?</summary>
@@ -1978,6 +2069,7 @@ summary:focus-visible {
     <p id="waitlist-edu-hint" class="waitlist-note waitlist-edu">Only <span class="nowrap">.edu</span> email addresses are allowed.</p>
     <p id="waitlist-message" role="status" aria-live="polite"></p>
     <p class="waitlist-note">Only launch updates. Unsubscribe anytime.</p>
+    <p class="waitlist-privacy">Your email is stored in our private waitlist database and used only for Stack access updates.</p>
   </div>
 </section>
 
