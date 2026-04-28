@@ -1117,6 +1117,17 @@ summary:focus-visible {
   line-height: 1.5;
 }
 
+.waitlist-edu {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: var(--subtext);
+  font-size: 14px;
+}
+
+.waitlist .nowrap {
+  white-space: nowrap;
+}
+
 #waitlist-message {
   margin-top: 14px;
   font-weight: 600;
@@ -1805,12 +1816,24 @@ summary:focus-visible {
     <h2>Join the waitlist</h2>
     <p>Be one of the first users.</p>
 
-    <!-- Set data-formsubmit-email to an inbox you can access, then confirm the first FormSubmit email: https://formsubmit.co -->
-    <form id="waitlist-form" class="waitlist-form" novalidate data-formsubmit-email="">
-      <label class="visually-hidden" for="email">Email</label>
-      <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
+    <!-- Get a free access key: https://web3forms.com — set data-web3forms-access-key below -->
+    <form id="waitlist-form" class="waitlist-form" novalidate data-web3forms-access-key="">
+      <label class="visually-hidden" for="email">School email</label>
+      <input
+        class="input"
+        id="email"
+        name="email"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        placeholder="you@school.edu"
+        required
+        title="Use a U.S. school email ending in .edu"
+        aria-describedby="waitlist-edu-hint"
+      />
       <button class="button" type="submit" id="waitlist-submit">Join</button>
     </form>
+    <p id="waitlist-edu-hint" class="waitlist-note waitlist-edu">U.S. college and university email only (address must end in <span class="nowrap">.edu</span>).</p>
     <p id="waitlist-message" role="status" aria-live="polite"></p>
     <p class="waitlist-note">We’ll only use your email for Stack launch updates. Unsubscribe anytime.</p>
   </div>
@@ -1896,15 +1919,26 @@ lucide.createIcons();
   window.addEventListener("resize", onMq);
 })();
 
-function getWaitlistInbox() {
+function getWeb3FormsAccessKey() {
   const form = document.getElementById('waitlist-form');
-  const raw = form && form.dataset ? (form.dataset.formsubmitEmail || '').trim() : '';
-  if (!raw || raw.includes('YOUR_EMAIL') || raw === 'you@example.com') return '';
+  const raw = form && form.dataset ? (form.dataset.web3formsAccessKey || '').trim() : '';
+  if (!raw || /YOUR_ACCESS|XXXXXXXX|00000000/i.test(raw)) return '';
   return raw;
 }
 
 function isWaitlistConfigured() {
-  return Boolean(getWaitlistInbox());
+  return Boolean(getWeb3FormsAccessKey());
+}
+
+/** True if the host is a .edu domain (e.g. stanford.edu, student.cs.cmu.edu), not e.g. foo.education. */
+function isEduEmail(email) {
+  const m = String(email)
+    .trim()
+    .toLowerCase()
+    .match(/^[^\s@]+@([^\s@]+)$/);
+  if (!m) return false;
+  const labels = m[1].split(".");
+  return labels.length >= 2 && labels[labels.length - 1] === "edu";
 }
 
 document.getElementById('waitlist-form').addEventListener('submit', async function (e) {
@@ -1914,11 +1948,15 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
   const btn = document.getElementById('waitlist-submit');
   const email = emailInput.value.trim();
   const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const inbox = getWaitlistInbox();
+  const accessKey = getWeb3FormsAccessKey();
 
   msg.textContent = '';
   if (!valid) {
-    msg.textContent = 'Please enter a valid email.';
+    msg.textContent = "Please enter a valid email address.";
+    return;
+  }
+  if (!isEduEmail(email)) {
+    msg.textContent = "Please use a U.S. school email (your address should end in .edu).";
     return;
   }
 
@@ -1927,24 +1965,28 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
   btn.textContent = 'Sending…';
 
   if (!isWaitlistConfigured()) {
-    msg.innerHTML = 'We can’t save your email until the site owner connects the form. <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" class="link-accent">Follow Stack on LinkedIn</a> for updates.';
+    msg.innerHTML = 'We can’t save your email until the site owner adds a Web3Forms key. <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" class="link-accent">Follow Stack on LinkedIn</a> for updates.';
     emailInput.value = '';
     btn.disabled = false;
     btn.textContent = prev;
-    console.warn('Stack waitlist: set data-formsubmit-email on #waitlist-form to your receiving address, then confirm at https://formsubmit.co (first message activates the form).');
+    console.warn('Stack waitlist: set data-web3forms-access-key on #waitlist-form (get a key at https://web3forms.com).');
     return;
   }
 
   try {
-    const fd = new FormData();
-    fd.append('email', email);
-    fd.append('_subject', 'Stack waitlist signup');
-    fd.append('_captcha', 'false');
-
-    const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(inbox), {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: fd,
-      headers: { Accept: 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: 'Stack waitlist signup',
+        email: email,
+        from_name: 'Stack waitlist',
+        message: 'New .edu waitlist signup: ' + email,
+      }),
     });
 
     const data = await res.json().catch(() => ({}));
