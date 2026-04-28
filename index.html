@@ -1816,8 +1816,8 @@ summary:focus-visible {
     <h2>Join the waitlist</h2>
     <p>Be one of the first users.</p>
 
-    <!-- Get a free access key: https://web3forms.com — set data-web3forms-access-key below -->
-    <form id="waitlist-form" class="waitlist-form" novalidate data-web3forms-access-key="">
+    <!-- POSTs to stack-app on Vercel: set data-waitlist-api to full URL, e.g. https://your-app.vercel.app/api/waitlist-signup -->
+    <form id="waitlist-form" class="waitlist-form" novalidate data-waitlist-api="">
       <label class="visually-hidden" for="email">School email</label>
       <input
         class="input"
@@ -1919,15 +1919,20 @@ lucide.createIcons();
   window.addEventListener("resize", onMq);
 })();
 
-function getWeb3FormsAccessKey() {
+function getWaitlistApiUrl() {
   const form = document.getElementById('waitlist-form');
-  const raw = form && form.dataset ? (form.dataset.web3formsAccessKey || '').trim() : '';
-  if (!raw || /YOUR_ACCESS|XXXXXXXX|00000000/i.test(raw)) return '';
-  return raw;
+  const raw = form && form.dataset ? (form.dataset.waitlistApi || '').trim() : '';
+  if (!raw || /YOUR_DEPLOY|your-app\.vercel|example\.com/i.test(raw)) return '';
+  try {
+    const u = new URL(raw);
+    return u.protocol === 'http:' || u.protocol === 'https:' ? raw : '';
+  } catch {
+    return '';
+  }
 }
 
 function isWaitlistConfigured() {
-  return Boolean(getWeb3FormsAccessKey());
+  return Boolean(getWaitlistApiUrl());
 }
 
 /** True if the host is a .edu domain (e.g. stanford.edu, student.cs.cmu.edu), not e.g. foo.education. */
@@ -1948,7 +1953,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
   const btn = document.getElementById('waitlist-submit');
   const email = emailInput.value.trim();
   const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const accessKey = getWeb3FormsAccessKey();
+  const apiUrl = getWaitlistApiUrl();
 
   msg.textContent = '';
   if (!valid) {
@@ -1965,35 +1970,35 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
   btn.textContent = 'Sending…';
 
   if (!isWaitlistConfigured()) {
-    msg.innerHTML = 'We can’t save your email until the site owner adds a Web3Forms key. <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" class="link-accent">Follow Stack on LinkedIn</a> for updates.';
-    emailInput.value = '';
+    msg.innerHTML = 'Waitlist isn’t connected to the app yet. <a href="https://www.linkedin.com/company/s1ack/" target="_blank" rel="noopener noreferrer" class="link-accent">Follow Stack on LinkedIn</a> for updates — site owner: set the waitlist API URL on this form in index.html.';
     btn.disabled = false;
     btn.textContent = prev;
-    console.warn('Stack waitlist: set data-web3forms-access-key on #waitlist-form (get a key at https://web3forms.com).');
+    console.warn('Stack waitlist: set data-waitlist-api on #waitlist-form to your Vercel URL, e.g. https://<project>.vercel.app/api/waitlist-signup');
     return;
   }
 
   try {
-    const res = await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify({
-        access_key: accessKey,
-        subject: 'Stack waitlist signup',
-        email: email,
-        from_name: 'Stack waitlist',
-        message: 'New .edu waitlist signup: ' + email,
-      }),
+      body: JSON.stringify({ email: email }),
     });
 
     const data = await res.json().catch(() => ({}));
-    const ok = res.ok && (data.success === true || data.success === 'true');
-    if (ok) {
-      msg.textContent = "You're in — we'll be in touch soon.";
+    if (res.ok && data.success) {
+      if (data.already) {
+        msg.textContent = "You’re already on the list — we’ll be in touch.";
+      } else {
+        msg.textContent = "You’re in — we’ll be in touch soon.";
+      }
       emailInput.value = '';
+    } else if (data.error === 'edu_only') {
+      msg.textContent = "Please use a U.S. school email (your address should end in .edu).";
+    } else if (data.error === 'invalid_email') {
+      msg.textContent = 'Please enter a valid email address.';
     } else {
       msg.textContent = 'Something went wrong. Try again in a moment.';
     }
