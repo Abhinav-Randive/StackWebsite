@@ -1108,7 +1108,7 @@ summary:focus-visible {
 }
 
 .waitlist-note {
-  margin-top: 14px;
+  margin-top: 12px;
   font-size: 14px;
   color: var(--muted);
   max-width: 520px;
@@ -1118,10 +1118,10 @@ summary:focus-visible {
 }
 
 .waitlist-edu {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 0;
   color: var(--subtext);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .waitlist .nowrap {
@@ -1129,9 +1129,9 @@ summary:focus-visible {
 }
 
 #waitlist-message {
-  margin-top: 14px;
-  font-weight: 600;
-  min-height: 1.5em;
+  margin-top: 10px;
+  font-weight: 700;
+  min-height: 1.35em;
   color: var(--ink);
 }
 
@@ -1817,7 +1817,7 @@ summary:focus-visible {
     <p>Be one of the first users.</p>
 
     <!-- POSTs to stack-app on Vercel: set data-waitlist-api to full URL, e.g. https://your-app.vercel.app/api/waitlist-signup -->
-  <form id="waitlist-form" data-waitlist-api="https://stack-app-ochre.vercel.app/api/waitlist-signup" novalidate>
+    <form id="waitlist-form" class="waitlist-form" data-waitlist-api="https://stack-app-ochre.vercel.app/api/waitlist-signup" novalidate>
       <label class="visually-hidden" for="email">School email</label>
       <input
         class="input"
@@ -1828,14 +1828,14 @@ summary:focus-visible {
         autocomplete="email"
         placeholder="you@school.edu"
         required
-        title="Use a U.S. school email ending in .edu"
+        title="Use an email ending in .edu"
         aria-describedby="waitlist-edu-hint"
       />
       <button class="button" type="submit" id="waitlist-submit">Join</button>
     </form>
-    <p id="waitlist-edu-hint" class="waitlist-note waitlist-edu">U.S. college and university email only (address must end in <span class="nowrap">.edu</span>).</p>
+    <p id="waitlist-edu-hint" class="waitlist-note waitlist-edu">Only <span class="nowrap">.edu</span> email addresses are allowed.</p>
     <p id="waitlist-message" role="status" aria-live="polite"></p>
-    <p class="waitlist-note">We’ll only use your email for Stack launch updates. Unsubscribe anytime.</p>
+    <p class="waitlist-note">Only launch updates. Unsubscribe anytime.</p>
   </div>
 </section>
 
@@ -1961,7 +1961,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
     return;
   }
   if (!isEduEmail(email)) {
-    msg.textContent = "Please use a U.S. school email (your address should end in .edu).";
+    msg.textContent = "Please use an email address ending in .edu.";
     return;
   }
 
@@ -1996,7 +1996,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
       }
       emailInput.value = '';
     } else if (data.error === 'edu_only') {
-      msg.textContent = "Please use a U.S. school email (your address should end in .edu).";
+      msg.textContent = "Please use an email address ending in .edu.";
     } else if (data.error === 'invalid_email') {
       msg.textContent = 'Please enter a valid email address.';
     } else {
