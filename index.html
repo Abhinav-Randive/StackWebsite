@@ -463,15 +463,15 @@ summary:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .phone {
-  width: min(320px, 88vw);
+  width: min(286px, 88vw);
   aspect-ratio: 9 / 19.6;
-  border-radius: 36px;
-  padding: 12px;
+  border-radius: 32px;
+  padding: 9px;
   background: var(--surface);
   box-shadow: 0 24px 60px rgba(31, 69, 59, 0.12);
   border: 1px solid var(--border);
@@ -536,12 +536,12 @@ summary:focus-visible {
 .app-shell {
   position: relative;
   z-index: 1;
-  padding: 12px 16px 12px;
+  padding: 10px 14px 10px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
   height: 100%;
   overflow: hidden;
 }
@@ -550,14 +550,22 @@ summary:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 700;
   color: var(--ink);
+  margin-top: 2px;
 }
 
 .app-status-dots {
   display: inline-flex;
-  gap: 3px;
+  gap: 2px;
+}
+
+.app-status-pill {
+  width: 108px;
+  height: 20px;
+  border-radius: 999px;
+  background: #0f1110;
 }
 
 .app-status-dot {
@@ -573,11 +581,11 @@ summary:focus-visible {
   justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 2px;
+  margin: 6px 0 2px;
 }
 
 .app-title {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 900;
   letter-spacing: -0.6px;
   line-height: 1.1;
@@ -585,11 +593,11 @@ summary:focus-visible {
 }
 
 .app-sub {
-  font-size: 10px;
+  font-size: 6px;
   line-height: 1.45;
   color: var(--subtext);
-  margin-top: 4px;
-  max-width: 220px;
+  margin-top: 5px;
+  max-width: 175px;
 }
 
 .app-bell-wrap {
@@ -599,11 +607,11 @@ summary:focus-visible {
 }
 
 .app-bell {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -630,8 +638,8 @@ summary:focus-visible {
 .app-hero {
   background: var(--hero-card);
   border: 1px solid var(--hero-border);
-  border-radius: 22px;
-  padding: 12px 12px 11px;
+  border-radius: 18px;
+  padding: 12px 12px 10px;
   box-shadow: var(--card-shadow);
   margin-top: 2px;
 }
@@ -645,9 +653,9 @@ summary:focus-visible {
 }
 
 .app-brand-logo {
-  width: 178px;
+  width: 140px;
   max-width: calc(100% + 36px);
-  height: 32px;
+  height: 26px;
   object-fit: contain;
   object-position: left center;
   display: block;
@@ -656,7 +664,7 @@ summary:focus-visible {
 }
 
 .app-hero-label {
-  font-size: 10px;
+  font-size: 7px;
   font-weight: 800;
   letter-spacing: 1.1px;
   text-transform: uppercase;
@@ -665,7 +673,7 @@ summary:focus-visible {
 }
 
 .app-hero-value {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--ink);
   margin-top: 4px;
@@ -674,7 +682,7 @@ summary:focus-visible {
 
 .app-hero-sub {
   margin: 0;
-  font-size: 9px;
+  font-size: 6px;
   line-height: 1.4;
   color: var(--accent2);
   margin-top: 7px;
@@ -692,12 +700,12 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
+  min-height: 46px;
   text-align: center;
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 700;
   padding: 7px 5px;
-  border-radius: 16px;
+  border-radius: 14px;
   line-height: 1.2;
 }
 
@@ -717,8 +725,8 @@ summary:focus-visible {
 .app-stacks-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 11px;
+  border-radius: 18px;
+  padding: 10px;
   box-shadow: var(--card-shadow);
 }
 
@@ -736,27 +744,27 @@ summary:focus-visible {
 }
 
 .app-stacks-label {
-  font-size: 10px;
+  font-size: 6.5px;
   font-weight: 800;
-  letter-spacing: 1.1px;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
   color: var(--subtext);
 }
 
 .app-stacks-value {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 900;
   color: var(--ink);
-  margin-top: 2px;
+  margin-top: 4px;
   letter-spacing: -0.3px;
 }
 
 .app-stacks-desc {
   margin: 0;
-  font-size: 9px;
+  font-size: 6px;
   line-height: 1.45;
   color: var(--subtext);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .app-progress-track {
@@ -776,10 +784,222 @@ summary:focus-visible {
 
 .app-stacks-foot {
   margin: 0;
-  font-size: 9px;
+  font-size: 6px;
   line-height: 1.4;
   color: var(--subtext);
   margin-top: 4px;
+}
+
+.app-chip-row {
+  display: flex;
+  gap: 6px;
+  margin: 3px 0 4px;
+}
+
+.app-chip {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5px;
+  font-weight: 800;
+  color: var(--accent2);
+  background: var(--surface);
+}
+
+.app-chip--active {
+  background: var(--accent);
+  border-color: rgba(79, 151, 71, 0.4);
+  color: #fff;
+}
+
+.app-activity-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: var(--card-shadow);
+}
+
+.app-activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(107, 191, 89, 0.15);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.app-amount-pill {
+  min-width: 62px;
+  height: 50px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #e8f2e8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.app-activity-meta {
+  margin-top: 8px;
+  font-size: 5.5px;
+  line-height: 1.4;
+  color: var(--subtext);
+}
+
+.app-outline-btn {
+  margin-top: 8px;
+  width: 100%;
+  min-height: 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--subtext);
+  font-size: 5.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-react-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.app-react-btn {
+  min-height: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--accent2);
+  font-size: 5.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-comment-input {
+  margin-top: 8px;
+  min-height: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: #9ab1ab;
+  font-size: 5.5px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.app-primary-btn {
+  margin-top: 8px;
+  width: 100%;
+  min-height: 34px;
+  border-radius: 13px;
+  border: 1px solid rgba(79, 151, 71, 0.4);
+  background: var(--accent);
+  color: #fff;
+  font-size: 7px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-stack-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: var(--card-shadow);
+}
+
+.app-stack-title {
+  font-size: 6px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  font-weight: 800;
+}
+
+.app-stack-name {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.app-stack-meta {
+  margin-top: 2px;
+  font-size: 5.8px;
+  color: var(--subtext);
+}
+
+.app-search {
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  color: #9ab1ab;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.app-bottom-nav {
+  margin-top: auto;
+  min-height: 52px;
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.app-nav-item {
+  color: #8fa8a0;
+  font-size: 5.8px;
+  font-weight: 700;
+}
+
+.app-nav-item--active {
+  color: var(--accent2);
+}
+
+.app-nav-plus {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
 }
 
 /* Next steps card (onboarding panel) */
@@ -1605,87 +1825,144 @@ summary:focus-visible {
         <div class="preview-wrap">
           <div class="phone" role="img" aria-label="Stack app Home screen preview">
             <div class="phone-screen phone-screen--app">
-              <div class="phone-carousel">
-                <div class="phone-slide phone-slide--home">
-                  <div class="app-blob" aria-hidden="true"></div>
-                  <div class="app-shell">
-                    <div class="app-status">
-                      <span>9:41</span>
-                      <span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span>
-                    </div>
-                    <div class="app-top">
-                      <div>
-                        <div class="app-title">Home</div>
-                        <div class="app-sub">A single place to see your shared savings and what’s next.</div>
-                      </div>
-                      <div class="app-bell-wrap"><div class="app-bell"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><span class="app-bell-badge">2</span></div>
-                    </div>
-                    <div class="app-hero">
-                      <div class="app-brand-wrap" aria-hidden="true"><img src="logo1.svg" alt="" class="app-brand-logo" /></div>
-                      <div class="app-hero-label">Total saved</div>
-                      <div class="app-hero-value">$1,240</div>
-                      <p class="app-hero-sub">Pay-ins are visible to members so everyone can see progress toward the goal.</p>
-                      <div class="app-hero-actions"><span class="app-btn app-btn--secondary">Leaderboard</span><span class="app-btn app-btn--primary">Browse stacks</span></div>
-                    </div>
-                    <div class="app-stacks-card">
-                      <div class="app-stacks-head"><span class="app-stacks-label">Stacks you’re in</span></div>
-                      <div class="app-stacks-value">3</div>
-                      <p class="app-stacks-desc">$4,200 saved together so far</p>
-                      <div class="app-progress-track" aria-hidden="true"><div class="app-progress-fill"></div></div>
-                      <p class="app-stacks-foot">$4,200 of $6,800 across your stack goals</p>
-                    </div>
+              <div class="app-blob" aria-hidden="true"></div>
+              <div class="app-shell">
+                <div class="app-status">
+                  <span>12:41</span>
+                  <span class="app-status-pill" aria-hidden="true"></span>
+                  <span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span>
+                </div>
+                <div class="app-top">
+                  <div>
+                    <div class="app-title">Home</div>
+                    <div class="app-sub">A single place to see your shared savings and what’s next.</div>
+                  </div>
+                  <div class="app-bell-wrap"><div class="app-bell"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div></div>
+                </div>
+                <div class="app-hero">
+                  <div class="app-brand-wrap" aria-hidden="true"><img src="logo1.svg" alt="" class="app-brand-logo" /></div>
+                  <div class="app-hero-label">Total saved</div>
+                  <div class="app-hero-value">$1500</div>
+                  <p class="app-hero-sub">Pay-ins are visible to members so everyone can see progress toward the goal.</p>
+                  <div class="app-hero-actions"><span class="app-btn app-btn--secondary">Leaderboard</span><span class="app-btn app-btn--primary">Browse<br/>stacks</span></div>
+                </div>
+                <div class="app-stacks-card">
+                  <div class="app-stacks-head"><span class="app-stacks-label">Stacks you’re in</span></div>
+                  <div class="app-stacks-value">3</div>
+                  <p class="app-stacks-desc">$361 saved together so far</p>
+                  <div class="app-progress-track" aria-hidden="true"><div class="app-progress-fill" style="width: 27%;"></div></div>
+                  <p class="app-stacks-foot">$361 of $1,350 across your stack goals</p>
+                </div>
+                <div class="app-next-card">
+                  <div class="app-next-label">Next steps</div>
+                  <p class="app-next-copy">2 of 3 setup steps complete.</p>
+                </div>
+                <div class="app-bottom-nav" aria-hidden="true">
+                  <span class="app-nav-item app-nav-item--active">Home</span>
+                  <span class="app-nav-item">Feed</span>
+                  <span class="app-nav-plus">+</span>
+                  <span class="app-nav-item">Stacks</span>
+                  <span class="app-nav-item">Profile</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone" role="img" aria-label="Stack app Activity screen preview">
+            <div class="phone-screen phone-screen--app">
+              <div class="app-blob" aria-hidden="true"></div>
+              <div class="app-shell">
+                <div class="app-status">
+                  <span>12:41</span>
+                  <span class="app-status-pill" aria-hidden="true"></span>
+                  <span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span>
+                </div>
+                <div class="app-top">
+                  <div>
+                    <div class="app-title">Activity</div>
+                    <div class="app-sub">Pay-ins, milestones, and comments from your stacks.</div>
                   </div>
                 </div>
-
-                <div class="phone-slide phone-slide--leaderboard">
-                  <div class="app-shell">
-                    <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top">
-                      <div>
-                        <div class="app-title">Leaderboard</div>
-                        <div class="app-sub">A friendly look at who’s been showing up for your shared goals.</div>
-                      </div>
-                      <div class="app-bell-wrap"><div class="app-bell">🏆</div></div>
-                    </div>
-                    <div class="app-stacks-card"><div class="app-hero-label">#1</div><p class="app-stacks-desc">Alex • 12 day streak · 5 completed · 24 moves</p></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">#2</div><p class="app-stacks-desc">You • 9 day streak · 3 completed · 18 moves</p></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">#3</div><p class="app-stacks-desc">Priya • 7 day streak · 2 completed · 14 moves</p></div>
+                <div class="app-chip-row">
+                  <span class="app-chip app-chip--active">All</span>
+                  <span class="app-chip">My Stacks</span>
+                  <span class="app-chip">Friends</span>
+                </div>
+                <div class="app-activity-card">
+                  <div class="app-stacks-label">Activity</div>
+                  <div class="app-activity-header">
+                    <span class="app-avatar">A</span>
+                    <span class="app-amount-pill">$50</span>
+                  </div>
+                  <div class="app-activity-meta">
+                    <strong>Abhinav</strong><br/>
+                    <span style="color: var(--accent2); font-weight: 700;">Pay-in</span><br/>
+                    Abhinav made a pay-in in Index Fund
+                  </div>
+                  <div class="app-outline-btn">Open Index Fund</div>
+                  <div class="app-react-row">
+                    <div class="app-react-btn">👍 0</div>
+                    <div class="app-react-btn">♡ 0</div>
+                    <div class="app-react-btn">🔥 0</div>
+                    <div class="app-react-btn">✨ 0</div>
+                  </div>
+                  <div class="app-comment-input">Say something kind</div>
+                  <div class="app-primary-btn">Post comment</div>
+                </div>
+                <div class="app-bottom-nav" aria-hidden="true">
+                  <span class="app-nav-item">Home</span>
+                  <span class="app-nav-item app-nav-item--active">Feed</span>
+                  <span class="app-nav-plus">+</span>
+                  <span class="app-nav-item">Stacks</span>
+                  <span class="app-nav-item">Profile</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone" role="img" aria-label="Stack app Stacks screen preview">
+            <div class="phone-screen phone-screen--app">
+              <div class="app-blob" aria-hidden="true"></div>
+              <div class="app-shell">
+                <div class="app-status">
+                  <span>12:41</span>
+                  <span class="app-status-pill" aria-hidden="true"></span>
+                  <span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span>
+                </div>
+                <div class="app-top">
+                  <div>
+                    <div class="app-title">Stacks</div>
+                    <div class="app-sub">Group savings goals in one place-track progress with your members.</div>
                   </div>
                 </div>
-
-                <div class="phone-slide phone-slide--feed">
-                  <div class="app-shell">
-                    <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top">
-                      <div>
-                        <div class="app-title">Notifications</div>
-                        <div class="app-sub">Recent updates from stacks you’re part of.</div>
-                      </div>
-                      <div class="app-bell-wrap"><div class="app-bell">🔔</div></div>
-                    </div>
-                    <div class="app-stacks-card"><div class="app-hero-label">New contribution</div><p class="app-stacks-desc">Sarah added $30 to Trip Fund</p></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">Milestone reached</div><p class="app-stacks-desc">Emergency Buffer hit 68%</p></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">Read status</div><p class="app-stacks-desc">Mark all as read • 2 unread</p></div>
-                  </div>
+                <div class="app-stacks-label">Your stacks</div>
+                <div class="app-chip-row">
+                  <span class="app-chip app-chip--active">Active</span>
+                  <span class="app-chip">Completed</span>
                 </div>
-
-                <div class="phone-slide phone-slide--stacks">
-                  <div class="app-shell">
-                    <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top">
-                      <div>
-                        <div class="app-title">Stack detail</div>
-                        <div class="app-sub">Contribute, track progress, and see circle activity in one place.</div>
-                      </div>
-                    </div>
-                    <div class="app-hero">
-                      <div class="app-hero-label">Emergency Buffer</div>
-                      <div class="app-hero-value">$5,760</div>
-                      <p class="app-hero-sub">$5,760 of $8,000 goal • 72% complete</p>
-                    </div>
-                    <div class="app-stacks-card"><div class="app-hero-label">Recent pay-in</div><p class="app-stacks-desc">You added $45 • 2h ago</p></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">Circle activity</div><p class="app-stacks-desc">3 members checked in today</p></div>
-                  </div>
+                <div class="app-search">Search stacks</div>
+                <div class="app-stack-item">
+                  <div class="app-stack-title">Active stack</div>
+                  <div class="app-stack-name">Winter Break Trip</div>
+                  <div class="app-stack-meta">$120 saved of $450 goal</div>
+                  <div class="app-stack-meta">227 days left</div>
+                </div>
+                <div class="app-stack-item">
+                  <div class="app-stack-title">Active stack</div>
+                  <div class="app-stack-name">Index Fund</div>
+                  <div class="app-stack-meta">$50 saved of $500 goal</div>
+                  <div class="app-stack-meta">3 days left</div>
+                </div>
+                <div class="app-stack-item">
+                  <div class="app-stack-title">Active stack</div>
+                  <div class="app-stack-name">Spring Break Trip</div>
+                  <div class="app-stack-meta">$191 saved of $400 goal</div>
+                  <div class="app-stack-meta">7 days left</div>
+                </div>
+                <div class="app-bottom-nav" aria-hidden="true">
+                  <span class="app-nav-item">Home</span>
+                  <span class="app-nav-item">Feed</span>
+                  <span class="app-nav-plus">+</span>
+                  <span class="app-nav-item app-nav-item--active">Stacks</span>
+                  <span class="app-nav-item">Profile</span>
                 </div>
               </div>
             </div>
