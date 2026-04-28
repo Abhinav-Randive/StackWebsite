@@ -457,7 +457,7 @@ summary:focus-visible {
 
 .phone {
   width: min(320px, 88vw);
-  aspect-ratio: 9 / 20.5;
+  aspect-ratio: 9 / 19.6;
   border-radius: 36px;
   padding: 12px;
   background: var(--surface);
@@ -494,14 +494,14 @@ summary:focus-visible {
 .app-shell {
   position: relative;
   z-index: 1;
-  padding: 14px 20px 16px;
+  padding: 12px 16px 12px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .app-status {
@@ -535,7 +535,7 @@ summary:focus-visible {
 }
 
 .app-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   letter-spacing: -0.6px;
   line-height: 1.1;
@@ -543,10 +543,10 @@ summary:focus-visible {
 }
 
 .app-sub {
-  font-size: 11px;
-  line-height: 1.5;
+  font-size: 10px;
+  line-height: 1.45;
   color: var(--subtext);
-  margin-top: 6px;
+  margin-top: 4px;
   max-width: 220px;
 }
 
@@ -588,24 +588,24 @@ summary:focus-visible {
 .app-hero {
   background: var(--hero-card);
   border: 1px solid var(--hero-border);
-  border-radius: 26px;
-  padding: 16px 14px 14px;
+  border-radius: 22px;
+  padding: 12px 12px 11px;
   box-shadow: var(--card-shadow);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .app-brand-wrap {
   width: 100%;
-  min-height: 40px;
-  margin-bottom: 4px;
+  min-height: 32px;
+  margin-bottom: 2px;
   display: flex;
   align-items: center;
 }
 
 .app-brand-logo {
-  width: 200px;
+  width: 178px;
   max-width: calc(100% + 36px);
-  height: 40px;
+  height: 32px;
   object-fit: contain;
   object-position: left center;
   display: block;
@@ -623,25 +623,25 @@ summary:focus-visible {
 }
 
 .app-hero-value {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 900;
   color: var(--ink);
-  margin-top: 6px;
+  margin-top: 4px;
   letter-spacing: -0.5px;
 }
 
 .app-hero-sub {
   margin: 0;
-  font-size: 10px;
-  line-height: 1.5;
+  font-size: 9px;
+  line-height: 1.4;
   color: var(--accent2);
-  margin-top: 10px;
+  margin-top: 7px;
 }
 
 .app-hero-actions {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 8px;
   align-items: stretch;
 }
 
@@ -650,12 +650,12 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
+  min-height: 34px;
   text-align: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 8px 6px;
-  border-radius: 18px;
+  padding: 7px 5px;
+  border-radius: 16px;
   line-height: 1.2;
 }
 
@@ -675,8 +675,8 @@ summary:focus-visible {
 .app-stacks-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 14px;
+  border-radius: 20px;
+  padding: 11px;
   box-shadow: var(--card-shadow);
 }
 
@@ -702,27 +702,27 @@ summary:focus-visible {
 }
 
 .app-stacks-value {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   color: var(--ink);
-  margin-top: 4px;
+  margin-top: 2px;
   letter-spacing: -0.3px;
 }
 
 .app-stacks-desc {
   margin: 0;
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1.45;
   color: var(--subtext);
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .app-progress-track {
-  height: 8px;
+  height: 7px;
   border-radius: 8px;
   background: var(--accent-soft);
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .app-progress-fill {
@@ -737,15 +737,15 @@ summary:focus-visible {
   font-size: 9px;
   line-height: 1.4;
   color: var(--subtext);
-  margin-top: 5px;
+  margin-top: 4px;
 }
 
 /* Next steps card (onboarding panel) */
 .app-next-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 14px;
+  border-radius: 20px;
+  padding: 11px;
   box-shadow: var(--card-shadow);
 }
 
@@ -759,30 +759,69 @@ summary:focus-visible {
 
 .app-next-copy {
   margin: 0;
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1.45;
   color: var(--ink);
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .app-next-actions {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 5px;
+  margin-top: 6px;
 }
 
 .app-next-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  padding: 8px 10px;
+  min-height: 32px;
+  padding: 7px 9px;
   border-radius: 18px;
   font-size: 9px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
+}
+
+.app-thumbs {
+  margin-top: 10px;
+  width: min(320px, 88vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.app-thumb {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: var(--card-shadow);
+}
+
+.app-thumb-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--subtext);
+}
+
+.app-thumb-title {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.app-thumb-line {
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--subtext);
 }
 
 .app-next-btn--primary {
@@ -1237,6 +1276,10 @@ summary:focus-visible {
   .app-btn {
     width: 100%;
   }
+
+  .app-thumbs {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1557,15 +1600,21 @@ summary:focus-visible {
               </div>
               <p class="app-stacks-foot">$4,200 of $6,800 across your stack goals</p>
             </div>
-            <div class="app-next-card">
-              <div class="app-next-label">Next steps</div>
-              <p class="app-next-copy">1 of 3 setup steps complete.</p>
-              <div class="app-next-actions">
-                <span class="app-next-btn app-next-btn--primary">Start your first stack</span>
-                <span class="app-next-btn app-next-btn--done">Done — Invite a friend to stack with</span>
-              </div>
-            </div>
           </div>
+        </div>
+      </div>
+      <div class="app-thumbs" aria-label="Other app screens">
+        <div class="app-thumb" role="img" aria-label="Leaderboard screen preview">
+          <div class="app-thumb-label">Leaderboard</div>
+          <div class="app-thumb-title">#2 this week</div>
+          <div class="app-thumb-line">$310 moved to goals</div>
+          <div class="app-thumb-line">+4 streak points</div>
+        </div>
+        <div class="app-thumb" role="img" aria-label="Circle feed screen preview">
+          <div class="app-thumb-label">Circle feed</div>
+          <div class="app-thumb-title">Trip Fund 68%</div>
+          <div class="app-thumb-line">Sarah added $30</div>
+          <div class="app-thumb-line">2 check-ins today</div>
         </div>
       </div>
     </div>
