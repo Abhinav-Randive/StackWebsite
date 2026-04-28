@@ -503,7 +503,7 @@ summary:focus-visible {
   inset: 0;
   opacity: 0;
   transform: translateY(8px);
-  animation: phone-slide-rotate 20s infinite;
+  animation: phone-slide-rotate 16s infinite;
 }
 
 .phone-slide--home {
@@ -518,12 +518,8 @@ summary:focus-visible {
   animation-delay: 8s;
 }
 
-.phone-slide--friends {
+.phone-slide--stacks {
   animation-delay: 12s;
-}
-
-.phone-slide--analytics {
-  animation-delay: 16s;
 }
 
 .app-blob {
@@ -1644,38 +1640,62 @@ summary:focus-visible {
                 <div class="phone-slide phone-slide--leaderboard">
                   <div class="app-shell">
                     <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top"><div><div class="app-title">Leaderboard</div><div class="app-sub">See how your circle is moving this week.</div></div></div>
-                    <div class="app-stacks-card"><div class="app-stacks-value">#2</div><p class="app-stacks-desc">You moved $310 to goals this week.</p></div>
-                    <div class="app-stacks-card"><p class="app-stacks-desc">Alex $355</p><p class="app-stacks-desc">You $310</p><p class="app-stacks-desc">Priya $280</p></div>
-                    <div class="app-stacks-card"><p class="app-stacks-foot">12 active friends • +4 streak points</p></div>
+                    <div class="app-top">
+                      <div>
+                        <div class="app-title">Leaderboard</div>
+                        <div class="app-sub">A friendly look at who’s been showing up for your shared goals.</div>
+                      </div>
+                      <div class="app-bell-wrap"><div class="app-bell">🏆</div></div>
+                    </div>
+                    <div class="app-stacks-card"><div class="app-hero-label">#1</div><p class="app-stacks-desc">Alex • 12 day streak · 5 completed · 24 moves</p></div>
+                    <div class="app-stacks-card"><div class="app-hero-label">#2</div><p class="app-stacks-desc">You • 9 day streak · 3 completed · 18 moves</p></div>
+                    <div class="app-stacks-card"><div class="app-hero-label">#3</div><p class="app-stacks-desc">Priya • 7 day streak · 2 completed · 14 moves</p></div>
                   </div>
                 </div>
 
                 <div class="phone-slide phone-slide--feed">
                   <div class="app-shell">
                     <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top"><div><div class="app-title">Circle feed</div><div class="app-sub">Live updates from your trusted groups.</div></div></div>
-                    <div class="app-hero"><div class="app-hero-label">Trip Fund</div><div class="app-hero-value">68%</div><p class="app-hero-sub">Sarah added $30 • 2 check-ins today</p></div>
-                    <div class="app-stacks-card"><p class="app-stacks-desc">Weekly check-in posted</p><p class="app-stacks-desc">Emergency Buffer +$20</p><p class="app-stacks-desc">3 friends reacted</p></div>
+                    <div class="app-top">
+                      <div>
+                        <div class="app-title">Notifications</div>
+                        <div class="app-sub">Recent updates from stacks you’re part of.</div>
+                      </div>
+                      <div class="app-bell-wrap"><div class="app-bell">🔔</div></div>
+                    </div>
+                    <div class="app-stacks-card"><div class="app-hero-label">New contribution</div><p class="app-stacks-desc">Sarah added $30 to Trip Fund</p></div>
+                    <div class="app-stacks-card"><div class="app-hero-label">Milestone reached</div><p class="app-stacks-desc">Emergency Buffer hit 68%</p></div>
+                    <div class="app-stacks-card"><div class="app-hero-label">Read status</div><p class="app-stacks-desc">Mark all as read • 2 unread</p></div>
                   </div>
                 </div>
 
                 <div class="phone-slide phone-slide--friends">
                   <div class="app-shell">
                     <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top"><div><div class="app-title">Friends</div><div class="app-sub">Invite people you trust and keep circles tight.</div></div></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">Add by email</div><p class="app-stacks-desc">ananya@uni.edu</p></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">Invite code</div><div class="app-stacks-value">STACK24</div></div>
-                    <div class="app-stacks-card"><p class="app-stacks-foot">6 friends connected</p></div>
+                    <div class="app-top">
+                      <div>
+                        <div class="app-title">Friends</div>
+                        <div class="app-sub">The people you save alongside—invite someone you trust.</div>
+                      </div>
+                    </div>
+                    <div class="app-hero"><div class="app-hero-label">Add by email</div><p class="app-hero-sub">Enter email → Add friend</p><div class="app-hero-actions"><span class="app-btn app-btn--primary">Add friend</span></div></div>
+                    <div class="app-stacks-card"><div class="app-hero-label">Redeem invite code</div><p class="app-stacks-desc">STACK24</p><p class="app-stacks-foot">Redeem code</p></div>
+                    <div class="app-stacks-card"><p class="app-stacks-desc">Search friends • No friends yet—add someone you’d like to stack with.</p></div>
                   </div>
                 </div>
 
                 <div class="phone-slide phone-slide--analytics">
                   <div class="app-shell">
                     <div class="app-status"><span>9:41</span><span class="app-status-dots" aria-hidden="true"><span class="app-status-dot"></span><span class="app-status-dot"></span><span class="app-status-dot"></span></span></div>
-                    <div class="app-top"><div><div class="app-title">Analytics</div><div class="app-sub">How your savings behavior is trending.</div></div></div>
-                    <div class="app-stacks-card"><div class="app-hero-label">This week</div><div class="app-stacks-value">$190</div><p class="app-stacks-desc">+18% vs last week</p></div>
-                    <div class="app-stacks-card"><p class="app-stacks-desc">Best streak: 14 days</p><p class="app-stacks-desc">Active goals: 3</p><p class="app-stacks-desc">Circle consistency: 82%</p></div>
+                    <div class="app-top">
+                      <div>
+                        <div class="app-title">Analytics</div>
+                        <div class="app-sub">How your savings have changed over time.</div>
+                      </div>
+                    </div>
+                    <div class="app-stacks-card"><div class="app-hero-label">Total saved</div><div class="app-stacks-value">$1,240</div><p class="app-stacks-desc">Trend +18%</p></div>
+                    <div class="app-stacks-card"><div class="app-hero-label">This month</div><p class="app-stacks-desc">$190 • Contributions 18 • Active stacks 3</p></div>
+                    <div class="app-stacks-card"><p class="app-stacks-desc">Recent contributions: Trip Fund +$30 • Buffer +$20 • No-spend +$15</p></div>
                   </div>
                 </div>
               </div>
